@@ -1652,4 +1652,10 @@ void initapp()
 	PyModule_AddIntConstant(poModule, "USE_OPENID",	0);
 	PyModule_AddIntConstant(poModule, "OPENID_TEST",	0);
 #endif /* USE_OPENID */
+
+#ifdef ENABLE_REFINE_RENEWAL
+	PyModule_AddIntConstant(poModule, "ENABLE_REFINE_RENEWAL",	1);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_REFINE_RENEWAL",	0);
+#endif
 }
