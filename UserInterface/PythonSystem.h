@@ -80,6 +80,11 @@ class CPythonSystem : public CSingleton<CPythonSystem>
 			bool			bShowMobAIFlag;
 #endif
 			bool			bLockMultiShop;
+			
+			int				bCamera;
+			bool			bCurrencyToolTip;
+			bool			bTaskbarToolTip;
+			bool			bBonusSortToolTip;
 		} TConfig;
 
 	public:
@@ -132,6 +137,19 @@ class CPythonSystem : public CSingleton<CPythonSystem>
 #endif
 		void							SetMultiShopLock(int iFlag);
 		bool							IsMultiShopLock();
+		
+		void							SetCameraDistance(int iFlag);
+		int								GetCameraDistance();					
+		
+		void							SetCurrencyToolTipFlag(int iFlag);
+		bool							IsShowCurrencyToolTip();
+
+		void							SetTaskbarToolTipFlag(int iFlag);
+		bool							IsShowTaskbarToolTip();
+
+		void							SetBonusSortToolTipFlag(int iFlag);
+		bool							IsShowBonusSortToolTip();		
+		
 		// Window
 		void							SaveWindowStatus(int iIndex, int iVisible, int iMinimized, int ix, int iy, int iHeight);
 

@@ -313,6 +313,10 @@ void CPythonSystem::SetDefaultConfig()
 	m_Config.bShowMobAIFlag		= true;
 #endif
 	m_Config.bLockMultiShop		= true;
+	m_Config.bCamera			= 0;
+	m_Config.bCurrencyToolTip	= true;
+	m_Config.bTaskbarToolTip	= true;
+	m_Config.bBonusSortToolTip	= true;
 }
 
 bool CPythonSystem::IsWindowed()
@@ -390,6 +394,49 @@ void CPythonSystem::SetMultiShopLock(int iOpt)
 bool CPythonSystem::IsMultiShopLock()
 {
 	return m_Config.bLockMultiShop;
+}
+
+
+void CPythonSystem::SetCameraDistance(int iOpt)
+{
+	m_Config.bCamera = iOpt;
+}
+
+int CPythonSystem::GetCameraDistance()
+{
+	return m_Config.bCamera;
+}
+
+
+void CPythonSystem::SetCurrencyToolTipFlag(int iOpt)
+{
+	m_Config.bCurrencyToolTip = iOpt == 1 ? true : false;
+}
+
+bool CPythonSystem::IsShowCurrencyToolTip()
+{
+	return m_Config.bCurrencyToolTip;
+}
+
+
+void CPythonSystem::SetTaskbarToolTipFlag(int iOpt)
+{
+	m_Config.bTaskbarToolTip = iOpt == 1 ? true : false;
+}
+
+bool CPythonSystem::IsShowTaskbarToolTip()
+{
+	return m_Config.bTaskbarToolTip;
+}
+
+void CPythonSystem::SetBonusSortToolTipFlag(int iOpt)
+{
+	m_Config.bBonusSortToolTip = iOpt == 1 ? true : false;
+}
+
+bool CPythonSystem::IsShowBonusSortToolTip()
+{
+	return m_Config.bBonusSortToolTip;
 }
 
 bool CPythonSystem::IsAutoTiling()
@@ -497,6 +544,19 @@ bool CPythonSystem::LoadConfig()
 
 		else if (!stricmp(command, "LOCK_MULTISHOP"))
 			m_Config.bLockMultiShop = atoi(value) == 1 ? true : false;
+		
+		else if (!stricmp(command, "CAMERA_DISTANCE"))
+			m_Config.bCamera = atoi(value);
+		
+		else if (!stricmp(command, "CURRENCY_TOOLTIP"))
+			m_Config.bCurrencyToolTip = atoi(value) == 1 ? true : false;
+		
+		else if (!stricmp(command, "TASKBAR_TOOLTIP"))
+			m_Config.bTaskbarToolTip = atoi(value) == 1 ? true : false;
+		
+		else if (!stricmp(command, "BONUS_SORT"))
+			m_Config.bBonusSortToolTip = atoi(value) == 1 ? true : false;
+
 	}
 
 	if (m_Config.bWindowed)
@@ -581,6 +641,11 @@ bool CPythonSystem::SaveConfig()
 #endif
 
 	fprintf(fp, "LOCK_MULTISHOP		%d\n", m_Config.bLockMultiShop);
+
+	fprintf(fp, "CAMERA_DISTANCE		%d\n", m_Config.bCamera);
+	fprintf(fp, "CURRENCY_TOOLTIP		%d\n", m_Config.bCurrencyToolTip);
+	fprintf(fp, "TASKBAR_TOOLTIP		%d\n", m_Config.bTaskbarToolTip);
+	fprintf(fp, "BONUS_SORT				%d\n", m_Config.bBonusSortToolTip);
 
 	fprintf(fp, "USE_DEFAULT_IME		%d\n", m_Config.bUseDefaultIME);
 	fprintf(fp, "SOFTWARE_TILING		%d\n", m_Config.bSoftwareTiling);

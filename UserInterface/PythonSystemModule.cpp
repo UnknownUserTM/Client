@@ -419,6 +419,69 @@ PyObject * systemIsMultiShopLock(PyObject * poSelf, PyObject * poArgs)
 	return Py_BuildValue("i", CPythonSystem::Instance().IsMultiShopLock());
 }
 
+
+
+PyObject * systemSetCameraDistance(PyObject * poSelf, PyObject * poArgs)
+{
+	int iOpt;
+	if (!PyTuple_GetInteger(poArgs, 0, &iOpt))
+		return Py_BuildException();
+
+	CPythonSystem::Instance().SetCameraDistance(iOpt);
+	return Py_BuildNone();
+}
+
+PyObject * systemGetCameraDistance(PyObject * poSelf, PyObject * poArgs)
+{
+	return Py_BuildValue("i", CPythonSystem::Instance().GetCameraDistance());
+}
+
+PyObject * systemSetCurrencyToolTip(PyObject * poSelf, PyObject * poArgs)
+{
+	int iOpt;
+	if (!PyTuple_GetInteger(poArgs, 0, &iOpt))
+		return Py_BuildException();
+
+	CPythonSystem::Instance().SetCurrencyToolTipFlag(iOpt);
+	return Py_BuildNone();
+}
+
+PyObject * systemIsShowCurrencyToolTip(PyObject * poSelf, PyObject * poArgs)
+{
+	return Py_BuildValue("i", CPythonSystem::Instance().IsShowCurrencyToolTip());
+}
+
+
+PyObject * systemSetTaskbarToolTipFlag(PyObject * poSelf, PyObject * poArgs)
+{
+	int iOpt;
+	if (!PyTuple_GetInteger(poArgs, 0, &iOpt))
+		return Py_BuildException();
+
+	CPythonSystem::Instance().SetTaskbarToolTipFlag(iOpt);
+	return Py_BuildNone();
+}
+
+PyObject * systemIsShowTaskbarToolTip(PyObject * poSelf, PyObject * poArgs)
+{
+	return Py_BuildValue("i", CPythonSystem::Instance().IsShowTaskbarToolTip());
+}
+
+PyObject * systemSetBonusSortToolTipFlag(PyObject * poSelf, PyObject * poArgs)
+{
+	int iOpt;
+	if (!PyTuple_GetInteger(poArgs, 0, &iOpt))
+		return Py_BuildException();
+
+	CPythonSystem::Instance().SetBonusSortToolTipFlag(iOpt);
+	return Py_BuildNone();
+}
+
+PyObject * systemIsShowBonusSortToolTip(PyObject * poSelf, PyObject * poArgs)
+{
+	return Py_BuildValue("i", CPythonSystem::Instance().IsShowBonusSortToolTip());
+}
+
 void initsystemSetting()
 {
 	static PyMethodDef s_methods[] =
@@ -481,6 +544,18 @@ void initsystemSetting()
 #endif
 		{ "SetMutliShopLock",			systemSetMultiShopLock,			METH_VARARGS },
 		{ "IsMultiShopLock",			systemIsMultiShopLock,			METH_VARARGS },
+
+		{ "SetCameraDistance",			systemSetCameraDistance,		METH_VARARGS },
+		{ "GetCameraDistance",			systemGetCameraDistance,		METH_VARARGS },
+		{ "SetCurrencyToolTipFlag",		systemSetCurrencyToolTip,		METH_VARARGS },
+		{ "IsShowCurrencyToolTip",		systemIsShowCurrencyToolTip,	METH_VARARGS },
+
+		{ "SetTaskbarToolTipFlag",		systemSetTaskbarToolTipFlag,	METH_VARARGS },
+		{ "IsShowTaskbarToolTip",		systemIsShowTaskbarToolTip,		METH_VARARGS },
+		{ "SetBonusSortToolTipFlag",	systemSetBonusSortToolTipFlag,	METH_VARARGS },
+		{ "IsShowBonusSortToolTip",		systemIsShowBonusSortToolTip,	METH_VARARGS },
+
+
 
 		{ NULL,							NULL,							NULL }
 	};
