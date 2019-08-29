@@ -684,7 +684,7 @@ bool CPythonApplication::Process()
 
 		if (m_isMinimizedWnd)
 		{
-			canRender = false;
+			canRender = true;
 		}
 		else
 		{
