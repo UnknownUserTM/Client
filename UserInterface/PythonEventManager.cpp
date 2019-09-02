@@ -12,7 +12,7 @@
 
 #include "PythonMiniMap.h"
 
-const long c_lNormal_Waiting_Time = 10;
+const long c_lNormal_Waiting_Time = 0;
 const int c_fLine_Temp = 16;
 
 void ShowArgument(script::TArgList & rArgumentList)
