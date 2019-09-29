@@ -404,7 +404,7 @@ enum
 #ifdef HWID_ENABLED
 	HWID_MAX_NUM = 128,
 #endif
-	CHAT_MAX_NUM = 128,
+	CHAT_MAX_NUM = 512,
 	PATH_NODE_MAX_NUM = 64,
 	SHOP_SIGN_MAX_LEN = 32,
 
@@ -1784,7 +1784,8 @@ enum EPointTypes
 	// 더구나 클라리언트에서는 blend_affect는 관리하지 않아,
 	// 임시로 이렇게 둔다.
 	POINT_ENERGY_END_TIME = 129,	// 129 기력 종료 시간
-
+	POINT_ATTBONUS_STONE,
+	POINT_ATTBONUS_BOSS,
 	// 클라이언트 포인트
 	POINT_MIN_WEP = 200,
 	POINT_MAX_WEP,
