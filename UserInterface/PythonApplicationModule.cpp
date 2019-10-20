@@ -1658,4 +1658,10 @@ void initapp()
 #else
 	PyModule_AddIntConstant(poModule, "ENABLE_REFINE_RENEWAL",	0);
 #endif
+
+#ifdef NEW_CLIENT_VERSION_CHECK
+    PyModule_AddIntConstant(poModule, "NEW_CLIENT_VERSION_CHECK", 1);
+#else
+    PyModule_AddIntConstant(poModule, "NEW_CLIENT_VERSION_CHECK", 0);
+#endif
 }

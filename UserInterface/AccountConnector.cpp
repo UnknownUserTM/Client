@@ -285,6 +285,9 @@ bool CAccountConnector::__AuthState_RecvPhase()
 			LoginPacket.pwd[PASS_MAX_NUM] = '\0';
 
 			// 비밀번호를 메모리에 계속 갖고 있는 문제가 있어서, 사용 즉시 날리는 것으로 변경
+#ifdef NEW_CLIENT_VERSION_CHECK
+			strncpy(LoginPacket.clientVersion, CLIENT_VERSION, sizeof(LoginPacket.clientVersion));
+#endif
 			ClearLoginInfo();
 			CPythonNetworkStream& rkNetStream=CPythonNetworkStream::Instance();
 			rkNetStream.ClearLoginInfo();
@@ -303,7 +306,7 @@ bool CAccountConnector::__AuthState_RecvPhase()
 			if (!SendSequence())
 			{
 				return false;
-			}
+	}
 		}
 #else /* USE_OPENID */
 
@@ -325,8 +328,11 @@ bool CAccountConnector::__AuthState_RecvPhase()
 		LoginPacket.pwd[PASS_MAX_NUM] = '\0';
 
 		// 비밀번호를 메모리에 계속 갖고 있는 문제가 있어서, 사용 즉시 날리는 것으로 변경
+#ifdef NEW_CLIENT_VERSION_CHECK
+		strncpy(LoginPacket.clientVersion, CLIENT_VERSION, sizeof(LoginPacket.clientVersion));
+#endif
 		ClearLoginInfo();
-		CPythonNetworkStream& rkNetStream=CPythonNetworkStream::Instance();
+		CPythonNetworkStream& rkNetStream = CPythonNetworkStream::Instance();
 		rkNetStream.ClearLoginInfo();
 
 		m_strPassword = "";
@@ -347,7 +353,7 @@ bool CAccountConnector::__AuthState_RecvPhase()
 #endif /* USE_OPENID */
 
 		__AuthState_Set();
-	}
+}
 
 	return true;
 }
