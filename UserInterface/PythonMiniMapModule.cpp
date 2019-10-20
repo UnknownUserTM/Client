@@ -185,6 +185,28 @@ PyObject * miniMapIsAtlas(PyObject * poSelf, PyObject * poArgs)
 	return Py_BuildValue("b", isData);
 }
 
+PyObject * miniMapGetAtlasPositionInfo(PyObject * poSelf, PyObject * poArgs)
+{
+	float fScrrenX;
+	if (!PyTuple_GetFloat(poArgs, 0, &fScrrenX))
+		return Py_BuildException();
+	float fScrrenY;
+	if (!PyTuple_GetFloat(poArgs, 1, &fScrrenY))
+		return Py_BuildException();
+
+	std::string aString = "";
+	float fPosX = 0.0f;
+	float fPosY = 0.0f;
+	DWORD dwTextColor = 0;
+	DWORD dwGuildID = 0;
+	bool bFind = CPythonMiniMap::Instance().GetAtlasPositionInfo(fScrrenX, fScrrenY, &fPosX, &fPosY);
+	int iPosX, iPosY;
+	PR_FLOAT_TO_INT(fPosX, iPosX);
+	PR_FLOAT_TO_INT(fPosY, iPosY);
+	iPosX /= 100;
+	iPosY /= 100;
+	return Py_BuildValue("ii", iPosX, iPosY);
+}
 
 PyObject * miniMapGetAtlasInfo(PyObject * poSelf, PyObject * poArgs)
 {
@@ -330,6 +352,7 @@ void initMiniMap()
 		{ "isShowAtlas",					miniMapisShowAtlas,								METH_VARARGS },
 		{ "IsAtlas",						miniMapIsAtlas,									METH_VARARGS },
 		{ "GetAtlasInfo",					miniMapGetAtlasInfo,							METH_VARARGS },
+		{ "GetAtlasPositionInfo",			miniMapGetAtlasPositionInfo,					METH_VARARGS },
 		{ "GetAtlasSize",					miniMapGetAtlasSize,							METH_VARARGS },
 
 		{ "AddWayPoint",					miniMapAddWayPoint,								METH_VARARGS },

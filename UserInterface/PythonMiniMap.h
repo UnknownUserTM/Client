@@ -63,6 +63,8 @@ class CPythonMiniMap : public CScreen, public CSingleton<CPythonMiniMap>
 		void HideAtlas();
 
 		bool GetAtlasInfo(float fScreenX, float fScreenY, std::string & rReturnString, float * pReturnPosX, float * pReturnPosY, DWORD * pdwTextColor, DWORD * pdwGuildID);
+		bool GetAtlasPositionInfo(float fScreenX, float fScreenY, float * pReturnPosX, float * pReturnPosY);
+		
 		bool GetAtlasSize(float * pfSizeX, float * pfSizeY);
 
 		void AddObserver(DWORD dwVID, float fSrcX, float fSrcY);
