@@ -6,3 +6,4 @@ bin/*
 /*/Distribute
 Metin2Client_VC100.opensdf
 *.ipch
+*.ipch
