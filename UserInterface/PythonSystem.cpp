@@ -317,6 +317,7 @@ void CPythonSystem::SetDefaultConfig()
 	m_Config.bCurrencyToolTip	= true;
 	m_Config.bTaskbarToolTip	= true;
 	m_Config.bBonusSortToolTip	= true;
+	m_Config.bIsForcedRules		= false;
 }
 
 bool CPythonSystem::IsWindowed()
@@ -439,6 +440,16 @@ bool CPythonSystem::IsShowBonusSortToolTip()
 	return m_Config.bBonusSortToolTip;
 }
 
+void CPythonSystem::SetForcedRulesDone()
+{
+	m_Config.bIsForcedRules = true;
+}
+
+bool CPythonSystem::IsForcedRules()
+{
+	return m_Config.bIsForcedRules;
+}
+
 bool CPythonSystem::IsAutoTiling()
 {
 	if (m_Config.bSoftwareTiling == 0)
@@ -557,6 +568,9 @@ bool CPythonSystem::LoadConfig()
 		else if (!stricmp(command, "BONUS_SORT"))
 			m_Config.bBonusSortToolTip = atoi(value) == 1 ? true : false;
 
+		else if (!stricmp(command, "FORCED_RULES"))
+			m_Config.bIsForcedRules = atoi(value) == 1 ? true : false;
+
 	}
 
 	if (m_Config.bWindowed)
@@ -646,6 +660,7 @@ bool CPythonSystem::SaveConfig()
 	fprintf(fp, "CURRENCY_TOOLTIP		%d\n", m_Config.bCurrencyToolTip);
 	fprintf(fp, "TASKBAR_TOOLTIP		%d\n", m_Config.bTaskbarToolTip);
 	fprintf(fp, "BONUS_SORT				%d\n", m_Config.bBonusSortToolTip);
+	fprintf(fp, "FORCED_RULES				%d\n", m_Config.bIsForcedRules);
 
 	fprintf(fp, "USE_DEFAULT_IME		%d\n", m_Config.bUseDefaultIME);
 	fprintf(fp, "SOFTWARE_TILING		%d\n", m_Config.bSoftwareTiling);

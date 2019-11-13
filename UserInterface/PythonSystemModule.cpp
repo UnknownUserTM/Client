@@ -477,6 +477,17 @@ PyObject * systemSetBonusSortToolTipFlag(PyObject * poSelf, PyObject * poArgs)
 	return Py_BuildNone();
 }
 
+PyObject * systemIsForcedRules(PyObject * poSelf, PyObject * poArgs)
+{
+	return Py_BuildValue("i", CPythonSystem::Instance().IsForcedRules());
+}
+
+PyObject * systemSetForcedRulesDone(PyObject * poSelf, PyObject * poArgs)
+{
+	CPythonSystem::Instance().SetForcedRulesDone();
+	return Py_BuildNone();
+}
+
 PyObject * systemIsShowBonusSortToolTip(PyObject * poSelf, PyObject * poArgs)
 {
 	return Py_BuildValue("i", CPythonSystem::Instance().IsShowBonusSortToolTip());
@@ -555,7 +566,8 @@ void initsystemSetting()
 		{ "SetBonusSortToolTipFlag",	systemSetBonusSortToolTipFlag,	METH_VARARGS },
 		{ "IsShowBonusSortToolTip",		systemIsShowBonusSortToolTip,	METH_VARARGS },
 
-
+		{ "SetForcedRulesDone",	systemSetForcedRulesDone,				METH_VARARGS },
+		{ "IsForcedRules",		systemIsForcedRules,					METH_VARARGS },
 
 		{ NULL,							NULL,							NULL }
 	};
