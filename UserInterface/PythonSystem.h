@@ -85,7 +85,7 @@ class CPythonSystem : public CSingleton<CPythonSystem>
 			bool			bCurrencyToolTip;
 			bool			bTaskbarToolTip;
 			bool			bBonusSortToolTip;
-			bool			bIsForcedRules;
+			int				bIsForcedRules;
 		} TConfig;
 
 	public:
@@ -152,7 +152,7 @@ class CPythonSystem : public CSingleton<CPythonSystem>
 		bool							IsShowBonusSortToolTip();		
 
 		void							SetForcedRulesDone(int iOpt);
-		bool							IsForcedRules();
+		int								IsForcedRules();
 		
 		// Window
 		void							SaveWindowStatus(int iIndex, int iVisible, int iMinimized, int ix, int iy, int iHeight);

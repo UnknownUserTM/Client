@@ -445,7 +445,7 @@ void CPythonSystem::SetForcedRulesDone(int iOpt)
 	m_Config.bIsForcedRules = iOpt;
 }
 
-bool CPythonSystem::IsForcedRules()
+int CPythonSystem::IsForcedRules()
 {
 	return m_Config.bIsForcedRules;
 }
