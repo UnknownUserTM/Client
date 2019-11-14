@@ -317,7 +317,7 @@ void CPythonSystem::SetDefaultConfig()
 	m_Config.bCurrencyToolTip	= true;
 	m_Config.bTaskbarToolTip	= true;
 	m_Config.bBonusSortToolTip	= true;
-	m_Config.bIsForcedRules		= false;
+	m_Config.bIsForcedRules		= 0;
 }
 
 bool CPythonSystem::IsWindowed()
@@ -440,9 +440,9 @@ bool CPythonSystem::IsShowBonusSortToolTip()
 	return m_Config.bBonusSortToolTip;
 }
 
-void CPythonSystem::SetForcedRulesDone()
+void CPythonSystem::SetForcedRulesDone(int iOpt)
 {
-	m_Config.bIsForcedRules = true;
+	m_Config.bIsForcedRules = iOpt;
 }
 
 bool CPythonSystem::IsForcedRules()
@@ -569,7 +569,7 @@ bool CPythonSystem::LoadConfig()
 			m_Config.bBonusSortToolTip = atoi(value) == 1 ? true : false;
 
 		else if (!stricmp(command, "FORCED_RULES"))
-			m_Config.bIsForcedRules = atoi(value) == 1 ? true : false;
+			m_Config.bIsForcedRules = atoi(value);
 
 	}
 

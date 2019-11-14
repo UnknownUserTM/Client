@@ -151,7 +151,7 @@ class CPythonSystem : public CSingleton<CPythonSystem>
 		void							SetBonusSortToolTipFlag(int iFlag);
 		bool							IsShowBonusSortToolTip();		
 
-		void							SetForcedRulesDone();
+		void							SetForcedRulesDone(int iOpt);
 		bool							IsForcedRules();
 		
 		// Window

@@ -484,7 +484,11 @@ PyObject * systemIsForcedRules(PyObject * poSelf, PyObject * poArgs)
 
 PyObject * systemSetForcedRulesDone(PyObject * poSelf, PyObject * poArgs)
 {
-	CPythonSystem::Instance().SetForcedRulesDone();
+	int iOpt;
+	if (!PyTuple_GetInteger(poArgs, 0, &iOpt))
+		return Py_BuildException();
+
+	CPythonSystem::Instance().SetForcedRulesDone(iOpt);
 	return Py_BuildNone();
 }
 
