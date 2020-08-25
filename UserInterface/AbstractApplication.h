@@ -1,6 +1,6 @@
 #pragma once
 //lol
-
+// Hallo?=
 #include "AbstractSingleton.h"
 
 class IAbstractApplication : public TAbstractSingleton<IAbstractApplication>
