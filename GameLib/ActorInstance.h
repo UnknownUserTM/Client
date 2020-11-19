@@ -611,6 +611,10 @@ class CActorInstance : public IActorInstance, public IFlyTargetableObject
 		void __ProcessDataAttackSuccess(const NRaceData::TAttackData & c_rAttackData, CActorInstance & rVictim, const D3DXVECTOR3 & c_rv3Position, UINT uiSkill = 0, BOOL isSendPacket = TRUE);
 		void __ProcessMotionEventAttackSuccess(DWORD dwMotionKey, BYTE byEventIndex, CActorInstance & rVictim);
 		void __ProcessMotionAttackSuccess(DWORD dwMotionKey, CActorInstance & rVictim);
+		
+#ifdef __ENABLE_SHAMAN_ATTACK_FIX__
+		float __GetInvisibleTimeAdjust(const UINT uiSkill, const NRaceData::TAttackData& c_rAttackData);
+#endif
 
 
 		void __HitStone(CActorInstance& rVictim);

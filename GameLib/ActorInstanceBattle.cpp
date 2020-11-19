@@ -703,22 +703,39 @@ void CActorInstance::__ProcessDataAttackSuccess(const NRaceData::TAttackData & c
 		// VICTIM_COLLISION_TEST_END
 	}
 
+#ifdef __ENABLE_SHAMAN_ATTACK_FIX__
 	// Invisible Time
 	if (IS_PARTY_HUNTING_RACE(rVictim.GetRace()))
 	{
-		if (uiSkill) // 파티 사냥 몬스터라도 스킬이면 무적시간 적용
+		if (uiSkill) // ÆAÆ¼ ≫c³E ¸o½ºAI¶oμμ ½ºA³AI¸e ¹≪Au½A°￡ Au¿e
+			rVictim.m_fInvisibleTime = CTimer::Instance().GetCurrentSecond() + (c_rAttackData.fInvisibleTime - __GetInvisibleTimeAdjust(uiSkill, c_rAttackData));
+
+		if (m_isMain) // #0000794: [M2KR] Æu¸®¸ðCA - ¹e·±½I ¹®A| A¸AI °ø°Y¿¡ ACCN ¹≪Au A¸AOAº °i·ACIAo ¾E°i AU½A °ø°Y¿¡ ACCN°I¸¸ A¼AⓒCN´U
+			rVictim.m_fInvisibleTime = CTimer::Instance().GetCurrentSecond() + (c_rAttackData.fInvisibleTime - __GetInvisibleTimeAdjust(uiSkill, c_rAttackData));
+	}
+	else // ÆAÆ¼ ≫c³E ¸o½ºAI°¡ ¾Æ´O °æ¿i¸¸ Au¿e
+	{
+		rVictim.m_fInvisibleTime = CTimer::Instance().GetCurrentSecond() + (c_rAttackData.fInvisibleTime - __GetInvisibleTimeAdjust(uiSkill, c_rAttackData));
+	}
+#else
+	// Invisible Time
+	if (IS_PARTY_HUNTING_RACE(rVictim.GetRace()))
+	{
+		if (uiSkill) // ÆAÆ¼ ≫c³E ¸o½ºAI¶oμμ ½ºA³AI¸e ¹≪Au½A°￡ Au¿e
 			rVictim.m_fInvisibleTime = CTimer::Instance().GetCurrentSecond() + c_rAttackData.fInvisibleTime;
 
-		if (m_isMain) // #0000794: [M2KR] 폴리모프 - 밸런싱 문제 타인 공격에 의한 무적 타임은 고려하지 않고 자신 공격에 의한것만 체크한다
+		if (m_isMain) // #0000794: [M2KR] Æu¸®¸ðCA - ¹e·±½I ¹®A| A¸AI °ø°Y¿¡ ACCN ¹≪Au A¸AOAº °i·ACIAo ¾E°i AU½A °ø°Y¿¡ ACCN°I¸¸ A¼AⓒCN´U
 			rVictim.m_fInvisibleTime = CTimer::Instance().GetCurrentSecond() + c_rAttackData.fInvisibleTime;
 	}
-	else // 파티 사냥 몬스터가 아닐 경우만 적용
+	else // ÆAÆ¼ ≫c³E ¸o½ºAI°¡ ¾Æ´O °æ¿i¸¸ Au¿e
 	{
 		rVictim.m_fInvisibleTime = CTimer::Instance().GetCurrentSecond() + c_rAttackData.fInvisibleTime;
 	}
+#endif
 
 	// Stiffen Time
 	rVictim.InsertDelay(c_rAttackData.fStiffenTime);
+
 
 	// Hit Effect
 	D3DXVECTOR3 vec3Effect(rVictim.m_x, rVictim.m_y, rVictim.m_z);
