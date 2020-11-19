@@ -242,10 +242,10 @@ bool CGuildMarkDownloader::__LoginState_RecvPing()
 	if (!Send(sizeof(TPacketCGPong), &kPacketPong))
 		return false;
 
-	if (IsSecurityMode())
-		return SendSequence();
-	else
-		return true;
+	//if (IsSecurityMode())
+	//return SendSequence();
+	//else
+	return true;
 }
 
 bool CGuildMarkDownloader::__LoginState_RecvPhase()

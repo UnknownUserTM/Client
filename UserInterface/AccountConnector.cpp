@@ -450,8 +450,8 @@ bool CAccountConnector::__AuthState_SendPong()
 	if (!Send(sizeof(kPacketPong), &kPacketPong))
 		return false;
 
-	if (IsSecurityMode())
-		return SendSequence();
+	//if (IsSecurityMode())
+	//return SendSequence();
 
 	return true;
 }
