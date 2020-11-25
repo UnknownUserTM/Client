@@ -833,6 +833,27 @@ PyObject* netSendGoldDropPacketNew(PyObject* poSelf, PyObject* poArgs)
 	return Py_BuildNone();
 }
 
+#ifdef ENABLE_SPECIAL_STORAGE
+PyObject* netSendSpecialMovePacket(PyObject* poSelf, PyObject* poArgs)
+{
+	int sourceCell, targetCell, type;
+	BYTE count;
+
+	if (!PyTuple_GetInteger(poArgs, 0, &type))
+		return Py_BuildException();
+	if (!PyTuple_GetInteger(poArgs, 1, &sourceCell))
+		return Py_BuildException();
+	if (!PyTuple_GetInteger(poArgs, 2, &targetCell))
+		return Py_BuildException();
+	if (!PyTuple_GetInteger(poArgs, 3, &count))
+		return Py_BuildException();
+
+	CPythonNetworkStream& rkNetStream = CPythonNetworkStream::Instance();
+	rkNetStream.SendItemMovePacket(TItemPos(type, sourceCell), TItemPos(INVENTORY, targetCell), (BYTE)count);
+	return Py_BuildNone();
+}
+#endif
+
 PyObject* netSendItemMovePacket(PyObject* poSelf, PyObject* poArgs)
 {
 	TItemPos Cell;
@@ -945,6 +966,18 @@ PyObject* netSendShopSellPacket(PyObject* poSelf, PyObject* poArgs)
 	return Py_BuildNone();
 }
 
+// PyObject* netSendShopSellPacketNew(PyObject* poSelf, PyObject* poArgs)
+// {
+	// int iSlotNumber;
+	// if (!PyTuple_GetInteger(poArgs, 0, &iSlotNumber))
+		// return Py_BuildException();
+	// int iCount;
+	// if (!PyTuple_GetInteger(poArgs, 1, &iCount))
+		// return Py_BuildException();
+	// CPythonNetworkStream& rkNetStream=CPythonNetworkStream::Instance();
+	// rkNetStream.SendShopSellPacketNew(iSlotNumber, iCount);
+	// return Py_BuildNone();
+// }
 PyObject* netSendShopSellPacketNew(PyObject* poSelf, PyObject* poArgs)
 {
 	int iSlotNumber;
@@ -953,8 +986,17 @@ PyObject* netSendShopSellPacketNew(PyObject* poSelf, PyObject* poArgs)
 	int iCount;
 	if (!PyTuple_GetInteger(poArgs, 1, &iCount))
 		return Py_BuildException();
+#ifdef ENABLE_SPECIAL_STORAGE
+	int iType;
+	if (!PyTuple_GetInteger(poArgs, 2, &iType))
+		return Py_BuildException();
+#endif
 	CPythonNetworkStream& rkNetStream=CPythonNetworkStream::Instance();
+#ifdef ENABLE_SPECIAL_STORAGE
+	rkNetStream.SendShopSellPacketNew(iSlotNumber, iCount, iType);
+#else
 	rkNetStream.SendShopSellPacketNew(iSlotNumber, iCount);
+#endif
 	return Py_BuildNone();
 }
 
@@ -1901,6 +1943,9 @@ void initnet()
 		{ "SendElkDropPacket",					netSendElkDropPacket,					METH_VARARGS },
 		{ "SendGoldDropPacketNew",				netSendGoldDropPacketNew,				METH_VARARGS },
 		{ "SendItemMovePacket",					netSendItemMovePacket,					METH_VARARGS },
+#ifdef ENABLE_SPECIAL_STORAGE
+		{ "SendSpecialMovePacket",				netSendSpecialMovePacket,				METH_VARARGS },
+#endif
 		{ "SendItemPickUpPacket",				netSendItemPickUpPacket,				METH_VARARGS },
 		{ "SendGiveItemPacket",					netSendGiveItemPacket,					METH_VARARGS },
 

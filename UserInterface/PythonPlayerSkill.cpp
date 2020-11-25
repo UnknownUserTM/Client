@@ -848,6 +848,17 @@ bool CPythonPlayer::__HasItem(DWORD dwItemID)
 		if (dwItemID == GetItemIndex(TItemPos (DRAGON_SOUL_INVENTORY, i)))
 			return true;
 	}
+#ifdef ENABLE_SPECIAL_STORAGE
+	for (int j = 0; j < c_Special_ItemSlot_Count; ++j)
+	{
+		if (dwItemID == GetItemIndex(TItemPos (UPGRADE_INVENTORY, j)))
+			return true;
+		if (dwItemID == GetItemIndex(TItemPos (BOOK_INVENTORY, j)))
+			return true;
+		if (dwItemID == GetItemIndex(TItemPos (STONE_INVENTORY, j)))
+			return true;
+	}
+#endif
 
 	return false;
 }

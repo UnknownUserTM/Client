@@ -561,6 +561,14 @@ const TItemData * CPythonPlayer::GetItemData(TItemPos Cell) const
 		return &m_playerStatus.aItem[Cell.cell];
 	case DRAGON_SOUL_INVENTORY:
 		return &m_playerStatus.aDSItem[Cell.cell];
+#ifdef ENABLE_SPECIAL_STORAGE
+	case UPGRADE_INVENTORY:
+		return &m_playerStatus.aSSUItem[Cell.cell];
+	case BOOK_INVENTORY:
+		return &m_playerStatus.aSSBItem[Cell.cell];
+	case STONE_INVENTORY:
+		return &m_playerStatus.aSSSItem[Cell.cell];
+#endif
 	default:
 		return NULL;
 	}
@@ -590,6 +598,17 @@ void CPythonPlayer::SetItemData(TItemPos Cell, const TItemData & c_rkItemInst)
 	case DRAGON_SOUL_INVENTORY:
 		m_playerStatus.aDSItem[Cell.cell] = c_rkItemInst;
 		break;
+#ifdef ENABLE_SPECIAL_STORAGE
+	case UPGRADE_INVENTORY:
+		m_playerStatus.aSSUItem[Cell.cell] = c_rkItemInst;
+		break;
+	case BOOK_INVENTORY:
+		m_playerStatus.aSSBItem[Cell.cell] = c_rkItemInst;
+		break;
+	case STONE_INVENTORY:
+		m_playerStatus.aSSSItem[Cell.cell] = c_rkItemInst;
+		break;
+#endif
 	}
 }
 

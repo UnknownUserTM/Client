@@ -1653,6 +1653,12 @@ void initapp()
 	PyModule_AddIntConstant(poModule, "OPENID_TEST",	0);
 #endif /* USE_OPENID */
 
+#ifdef ENABLE_SPECIAL_STORAGE
+	PyModule_AddIntConstant(poModule, "ENABLE_SPECIAL_STORAGE",	1);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_SPECIAL_STORAGE",	0);
+#endif
+
 #ifdef ENABLE_REFINE_RENEWAL
 	PyModule_AddIntConstant(poModule, "ENABLE_REFINE_RENEWAL",	1);
 #else
