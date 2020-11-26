@@ -1664,4 +1664,9 @@ void initapp()
 #else
     PyModule_AddIntConstant(poModule, "NEW_CLIENT_VERSION_CHECK", 0);
 #endif
+#ifdef ENABLE_NEW_TYPE_OF_POTION
+	PyModule_AddIntConstant(poModule, "ENABLE_NEW_TYPE_OF_POTION", 1);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_NEW_TYPE_OF_POTION", 0);
+#endif
 }
