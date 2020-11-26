@@ -2594,16 +2594,4 @@ void initPlayer()
 	PyModule_AddIntConstant(poModule, "DS_SUB_HEADER_DO_IMPROVEMENT",	DS_SUB_HEADER_DO_IMPROVEMENT);
 	PyModule_AddIntConstant(poModule, "DS_SUB_HEADER_DO_REFINE",	DS_SUB_HEADER_DO_REFINE);
 
-#ifdef ENABLE_SPECIAL_STORAGE
-	PyModule_AddIntConstant(poModule, "SLOT_TYPE_UPGRADE_INVENTORY",		SLOT_TYPE_UPGRADE_INVENTORY);
-	PyModule_AddIntConstant(poModule, "SLOT_TYPE_BOOK_INVENTORY",			SLOT_TYPE_BOOK_INVENTORY);
-	PyModule_AddIntConstant(poModule, "SLOT_TYPE_STONE_INVENTORY",			SLOT_TYPE_STONE_INVENTORY);
-	PyModule_AddIntConstant(poModule, "UPGRADE_INVENTORY",					UPGRADE_INVENTORY);
-	PyModule_AddIntConstant(poModule, "BOOK_INVENTORY",						BOOK_INVENTORY);
-	PyModule_AddIntConstant(poModule, "STONE_INVENTORY",					STONE_INVENTORY);
-	PyModule_AddIntConstant(poModule, "SPECIAL_PAGE_SIZE",		c_Special_Inventory_Page_Size);
-	PyModule_AddIntConstant(poModule, "SPECIAL_PAGE_COUNT",		c_Special_Inventory_Page_Count);
-	PyModule_AddIntConstant(poModule, "SPECIAL_SLOT_COUNT",		c_Special_ItemSlot_Count);
-#endif
-
 }

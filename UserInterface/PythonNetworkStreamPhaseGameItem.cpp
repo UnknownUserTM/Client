@@ -452,12 +452,7 @@ bool CPythonNetworkStream::SendShopSellPacket(BYTE bySlot)
 	return SendSequence();
 }
 
-// bool CPythonNetworkStream::SendShopSellPacketNew(BYTE bySlot, DWORD byCount)
-#ifdef ENABLE_SPECIAL_STORAGE
-bool CPythonNetworkStream::SendShopSellPacketNew(BYTE bySlot, BYTE byCount, BYTE byType)
-#else
-bool CPythonNetworkStream::SendShopSellPacketNew(BYTE bySlot, BYTE byCount)
-#endif
+bool CPythonNetworkStream::SendShopSellPacketNew(BYTE bySlot, DWORD byCount)
 {
 	if (!__CanActMainInstance())
 		return true;
@@ -481,13 +476,7 @@ bool CPythonNetworkStream::SendShopSellPacketNew(BYTE bySlot, BYTE byCount)
 		Tracef("SendShopAddSellPacket Error\n");
 		return false;
 	}
-#ifdef ENABLE_SPECIAL_STORAGE
-	if (!Send(sizeof(BYTE), &byType))
-	{
-		Tracef("SendShopAddSellPacket Error\n");
-		return false;
-	}
-#endif
+
 	Tracef(" SendShopSellPacketNew(bySlot=%d, byCount=%d)\n", bySlot, byCount);
 
 	return SendSequence();

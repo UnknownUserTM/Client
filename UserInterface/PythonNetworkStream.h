@@ -162,12 +162,8 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		bool SendShopEndPacket();
 		bool SendShopBuyPacket(BYTE byCount);
 		bool SendShopSellPacket(BYTE bySlot);
-		// bool SendShopSellPacketNew(BYTE bySlot, DWORD byCount);
-#ifdef ENABLE_SPECIAL_STORAGE
-		bool SendShopSellPacketNew(BYTE bySlot, BYTE byCount, BYTE byType);
-#else
-		bool SendShopSellPacketNew(BYTE bySlot, BYTE byCount);
-#endif
+		bool SendShopSellPacketNew(BYTE bySlot, DWORD byCount);
+
 		// Exchange
 		bool SendExchangeStartPacket(DWORD vid);
 		bool SendExchangeItemAddPacket(TItemPos ItemPos, BYTE byDisplayPos);

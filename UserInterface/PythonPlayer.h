@@ -119,11 +119,6 @@ class CPythonPlayer : public CSingleton<CPythonPlayer>, public IAbstractPlayer
 		{
 			TItemData			aItem[c_Inventory_Count];
 			TItemData			aDSItem[c_DragonSoul_Inventory_Count];
-#ifdef ENABLE_SPECIAL_STORAGE
-			TItemData			aSSUItem[c_Special_ItemSlot_Count];
-			TItemData			aSSBItem[c_Special_ItemSlot_Count];
-			TItemData			aSSSItem[c_Special_ItemSlot_Count];
-#endif
 			TQuickSlot			aQuickSlot[QUICKSLOT_MAX_NUM];
 			TSkillInstance		aSkill[SKILL_MAX_NUM];
 			int64_t				m_alPoint[POINT_MAX_NUM];

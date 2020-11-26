@@ -157,11 +157,7 @@ const DWORD c_DragonSoul_Inventory_Start = 0;
 const DWORD c_DragonSoul_Inventory_Box_Size = 32;
 const DWORD c_DragonSoul_Inventory_Count = CItemData::DS_SLOT_NUM_TYPES * DRAGON_SOUL_GRADE_MAX * c_DragonSoul_Inventory_Box_Size;
 const DWORD c_DragonSoul_Inventory_End = c_DragonSoul_Inventory_Start + c_DragonSoul_Inventory_Count;
-#ifdef ENABLE_SPECIAL_STORAGE
-const DWORD c_Special_Inventory_Page_Size = 5*9;
-const DWORD c_Special_Inventory_Page_Count = 2;
-const DWORD c_Special_ItemSlot_Count = c_Special_Inventory_Page_Size * c_Special_Inventory_Page_Count;
-#endif
+
 enum ESlotType
 {
 	SLOT_TYPE_NONE,
@@ -176,11 +172,6 @@ enum ESlotType
 	SLOT_TYPE_PRIVATE_SHOP,
 	SLOT_TYPE_MALL,
 	SLOT_TYPE_DRAGON_SOUL_INVENTORY,
-#ifdef ENABLE_SPECIAL_STORAGE
-	SLOT_TYPE_UPGRADE_INVENTORY,
-	SLOT_TYPE_BOOK_INVENTORY,
-	SLOT_TYPE_STONE_INVENTORY,
-#endif
 	SLOT_TYPE_MAX,
 };
 
@@ -192,14 +183,9 @@ enum EWindows
 	SAFEBOX,
 	MALL,
 	DRAGON_SOUL_INVENTORY,
-
 	GROUND,					// NOTE: 2013년 2월5일 현재까지 unused.. 왜 있는거지???
 	BELT_INVENTORY,			// NOTE: W2.1 버전에 새로 추가되는 벨트 슬롯 아이템이 제공하는 벨트 인벤토리
-#ifdef ENABLE_SPECIAL_STORAGE
-	UPGRADE_INVENTORY,
-	BOOK_INVENTORY,
-	STONE_INVENTORY,
-#endif
+
 	WINDOW_TYPE_MAX,
 };
 
@@ -249,17 +235,6 @@ typedef struct SItemPos
 		case DRAGON_SOUL_INVENTORY:
 			return cell < (DS_INVENTORY_MAX_NUM);
 			break;
-#ifdef ENABLE_SPECIAL_STORAGE
-		case UPGRADE_INVENTORY:
-			return cell < c_Special_ItemSlot_Count;
-			break;
-		case BOOK_INVENTORY:
-			return cell < c_Special_ItemSlot_Count;
-			break;
-		case STONE_INVENTORY:
-			return cell < c_Special_ItemSlot_Count;
-			break;
-#endif
 		default:
 			return false;
 		}
@@ -275,11 +250,6 @@ typedef struct SItemPos
 
 		case BELT_INVENTORY:
 		case DRAGON_SOUL_INVENTORY:
-#ifdef ENABLE_SPECIAL_STORAGE
-		case UPGRADE_INVENTORY:
-		case BOOK_INVENTORY:
-		case STONE_INVENTORY:
-#endif
 			return false;
 			break;
 
