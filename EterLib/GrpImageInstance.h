@@ -21,7 +21,6 @@ class CGraphicImageInstance
 
 		void SetDiffuseColor(float fr, float fg, float fb, float fa);
 		void SetPosition(float fx, float fy);
-		void SetScale(float fx, float fy);
 
 		void SetImagePointer(CGraphicImage* pImage);
 		void ReloadImagePointer(CGraphicImage* pImage);
@@ -47,7 +46,6 @@ class CGraphicImageInstance
 	protected:
 		D3DXCOLOR m_DiffuseColor;
 		D3DXVECTOR2 m_v2Position;
-		D3DXVECTOR2 m_v2Scale;
 
 		CGraphicImage::TRef m_roImage;
 

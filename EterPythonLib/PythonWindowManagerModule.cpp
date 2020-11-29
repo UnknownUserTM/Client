@@ -225,19 +225,6 @@ PyObject * wndMgrRegisterBox(PyObject * poSelf, PyObject * poArgs)
 }
 
 // Bar
-PyObject * wndMgrRegisterRenderTarget(PyObject * poSelf, PyObject * poArgs)
-{
-	PyObject * po;
-	if (!PyTuple_GetObject(poArgs, 0, &po))
-		return Py_BuildException();
-	char * szLayer;
-	if (!PyTuple_GetString(poArgs, 1, &szLayer))
-		return Py_BuildException();
-
-	UI::CWindow * pWindow = UI::CWindowManager::Instance().RegisterRenderTarget(po, szLayer);
-	return Py_BuildValue("i", pWindow);
-}
-
 PyObject * wndMgrRegisterBar(PyObject * poSelf, PyObject * poArgs)
 {
 	PyObject * po;
@@ -1585,22 +1572,6 @@ PyObject * wndMgrUnlockSlot(PyObject * poSelf, PyObject * poArgs)
 	return Py_BuildNone();
 }
 
-PyObject * wndRenderTargetSetRenderTarget(PyObject * poSelf, PyObject * poArgs)
-{
-	UI::CWindow * pWindow;
-	if (!PyTuple_GetWindow(poArgs, 0, &pWindow))
-		return Py_BuildException();
-	int index;
-	if (!PyTuple_GetInteger(poArgs, 1, &index))
-		return Py_BuildException();
-
-	if (pWindow->IsType(UI::CUiRenderTarget::Type()))
-	{
-		((UI::CUiRenderTarget *)pWindow)->SetRenderTarget(index);
-	}
-	return Py_BuildNone();
-}
-
 PyObject * wndBarSetColor(PyObject * poSelf, PyObject * poArgs)
 {
 	UI::CWindow * pWindow;
@@ -2417,8 +2388,6 @@ void initwndMgr()
 		{ "RegisterDragButton",			wndMgrRegisterDragButton,			METH_VARARGS },
 		{ "RegisterBox",				wndMgrRegisterBox,					METH_VARARGS },
 		{ "RegisterBar",				wndMgrRegisterBar,					METH_VARARGS },
-		{ "RegisterRenderTarget",		wndMgrRegisterRenderTarget,			METH_VARARGS },
-		{ "SetRenderTarget",			wndRenderTargetSetRenderTarget,		METH_VARARGS },
 		{ "RegisterLine",				wndMgrRegisterLine,					METH_VARARGS },
 		{ "RegisterBar3D",				wndMgrRegisterBar3D,				METH_VARARGS },
 		{ "RegisterNumberLine",			wndMgrRegisterNumberLine,			METH_VARARGS },

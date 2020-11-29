@@ -42,9 +42,6 @@
 #include "AbstractApplication.h"
 #include "MovieMan.h"
 
-#include "../eterLib/CRenderTarget.h"
-#include "../eterLib/CRenderTargetManager.h"
-
 class CPythonApplication : public CMSApplication, public CInputKeyboard, public IAbstractApplication
 {
 	public:
@@ -354,8 +351,6 @@ class CPythonApplication : public CMSApplication, public CInputKeyboard, public 
 		CNetworkDevice				m_netDevice;
 
 		CPythonSystem				m_pySystem;
-
-		CRenderTargetManager		m_kRenderTargetManager;
 
 
 		PyObject *					m_poMouseHandler;

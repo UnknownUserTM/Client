@@ -398,25 +398,9 @@ void CGraphicBase::GetSphereMatrix(D3DXMATRIX * pMatrix, float fValue)
 	pMatrix->_42 = -fValue;
 }
 
-float CGraphicBase::GetFOV() const
+float CGraphicBase::GetFOV()
 {
 	return ms_fFieldOfView;
-}
-
-float CGraphicBase::GetAspect() const
-{
-	return ms_fAspect;
-}
-
-float CGraphicBase::GetNear() const
-{
-	return ms_fNearY;
-}
-
-float CGraphicBase::GetFar() const
-{
-
-	return ms_fFarY;
 }
 
 void CGraphicBase::PushMatrix()
