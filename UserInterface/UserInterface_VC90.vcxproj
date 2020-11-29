@@ -233,10 +233,11 @@
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <BrowseInformation>true</BrowseInformation>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -323,6 +324,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AffectFlagContainer.cpp" />
+    <ClCompile Include="CPythonRenderTargetModule.cpp" />
     <ClCompile Include="InstanceBase.cpp" />
     <ClCompile Include="InstanceBaseBattle.cpp" />
     <ClCompile Include="InstanceBaseEffect.cpp" />

@@ -278,10 +278,11 @@
       <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <BrowseInformation>
       </BrowseInformation>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -332,6 +333,8 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CollisionData.cpp" />
     <ClCompile Include="ColorTransitionHelper.cpp" />
+    <ClCompile Include="CRenderTarget.cpp" />
+    <ClCompile Include="CRenderTargetManager.cpp" />
     <ClCompile Include="Decal.cpp" />
     <ClCompile Include="EnvironmentMap.cpp" />
     <ClCompile Include="FileLoaderThread.cpp" />
@@ -345,6 +348,7 @@
     <ClCompile Include="GrpObjectInstance.cpp" />
     <ClCompile Include="GrpPixelShader.cpp" />
     <ClCompile Include="GrpRatioInstance.cpp" />
+    <ClCompile Include="GrpRenderTargetTexture.cpp" />
     <ClCompile Include="GrpShadowTexture.cpp" />
     <ClCompile Include="GrpVertexBuffer.cpp" />
     <ClCompile Include="GrpVertexBufferDynamic.cpp" />
@@ -412,6 +416,8 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CollisionData.h" />
     <ClInclude Include="ColorTransitionHelper.h" />
+    <ClInclude Include="CRenderTarget.h" />
+    <ClInclude Include="CRenderTargetManager.h" />
     <ClInclude Include="Decal.h" />
     <ClInclude Include="Dynamic.h" />
     <ClInclude Include="EnvironmentMap.h" />
@@ -428,6 +434,7 @@
     <ClInclude Include="GrpObjectInstance.h" />
     <ClInclude Include="GrpPixelShader.h" />
     <ClInclude Include="GrpRatioInstance.h" />
+    <ClInclude Include="GrpRenderTargetTexture.h" />
     <ClInclude Include="GrpShadowTexture.h" />
     <ClInclude Include="GrpVertexBuffer.h" />
     <ClInclude Include="GrpVertexBufferDynamic.h" />

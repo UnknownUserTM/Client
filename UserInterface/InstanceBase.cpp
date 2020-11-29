@@ -2644,6 +2644,11 @@ bool CInstanceBase::__IsInViewFrustum()
 
 bool CInstanceBase::__CanRender()
 {
+	if (IsAlwaysRender())
+	{
+		return true;
+	}
+
 	if (!__IsInViewFrustum())
 		return false;
 	if (IsAffect(AFFECT_INVISIBILITY))
@@ -3320,6 +3325,7 @@ void CInstanceBase::__Initialize()
 	m_bDamageEffectType = false;
 	m_dwDuelMode = DUEL_NONE;
 	m_dwEmoticonTime = 0;
+	m_IsAlwaysRender = false;
 }
 
 CInstanceBase::CInstanceBase()
@@ -3332,6 +3338,15 @@ CInstanceBase::~CInstanceBase()
 	Destroy();
 }
 
+bool CInstanceBase::IsAlwaysRender()
+{
+	return m_IsAlwaysRender;
+}
+
+void CInstanceBase::SetAlwaysRender(bool val)
+{
+	m_IsAlwaysRender = val;
+}
 
 void CInstanceBase::GetBoundBox(D3DXVECTOR3 * vtMin, D3DXVECTOR3 * vtMax)
 {

@@ -321,6 +321,7 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="PythonLanguage.cpp" />
+    <ClCompile Include="CPythonRenderTargetModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AffectFlagContainer.h">

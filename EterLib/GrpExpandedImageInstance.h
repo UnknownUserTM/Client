@@ -45,7 +45,6 @@ class CGraphicExpandedImageInstance : public CGraphicImageInstance
 	protected:
 		float m_fDepth;
 		D3DXVECTOR2 m_v2Origin;
-		D3DXVECTOR2 m_v2Scale;
 		float m_fRotation;
 		RECT m_RenderingRect;
 		int m_iRenderingMode;
