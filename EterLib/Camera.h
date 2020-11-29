@@ -255,7 +255,6 @@ class CCameraManager : public CSingleton<CCameraManager>
 			NO_CURRENT_CAMERA,
 			DEFAULT_PERSPECTIVE_CAMERA,
 			DEFAULT_ORTHO_CAMERA,
-			SHOPDECO_CAMERA,
 			CAMERA_MAX = 255
 		};
 

@@ -162,11 +162,7 @@ class CGraphicBase
 		void		SetOrtho2D(float hres, float vres, float zres);
 		void		SetOrtho3D(float hres, float vres, float zmin, float zmax);
 		void		SetPerspective(float fov, float aspect, float nearz, float farz);
-		float		GetFOV() const;
-
-		float		GetAspect() const;
-		float		GetNear() const;
-		float		GetFar() const;
+		float		GetFOV();
 		void		GetClipPlane(float * fNearY, float * fFarY)
 		{
 			*fNearY = ms_fNearY;

@@ -169,7 +169,6 @@ void CPythonApplication::RenderGame()
 {
 	if (!PERF_CHECKER_RENDER_GAME)
 	{
-		m_kRenderTargetManager.RenderBackgrounds();
 		float fAspect=m_kWndMgr.GetAspect();
 		float fFarClip=m_pyBackground.GetFarClip();
 
@@ -179,8 +178,7 @@ void CPythonApplication::RenderGame()
 
 		m_kChrMgr.Deform();
 		m_kEftMgr.Update();
-		
-		m_kRenderTargetManager.DeformModels();
+
 		m_pyBackground.RenderCharacterShadowToTexture();
 
 		m_pyGraphic.SetGameRenderState();
@@ -203,7 +201,7 @@ void CPythonApplication::RenderGame()
 
 		m_pyBackground.SetCharacterDirLight();
 		m_kChrMgr.Render();
-		m_kRenderTargetManager.RenderModels();
+
 		m_pyBackground.SetBackgroundDirLight();
 		m_pyBackground.RenderWater();
 		m_pyBackground.RenderSnow();
@@ -340,8 +338,6 @@ void CPythonApplication::UpdateGame()
 		s.SetPerspective(30.0f,fAspect, 100.0f, fFarClip);
 		s.BuildViewFrustum();
 	}
-
-	m_kRenderTargetManager.UpdateModels();
 
 	DWORD t3=ELTimer_GetMSec();
 	TPixelPosition kPPosMainActor;
@@ -696,13 +692,9 @@ bool CPythonApplication::Process()
 			{
 				CPythonBackground& rkBG = CPythonBackground::Instance();
 				rkBG.ReleaseCharacterShadowTexture();
-				CRenderTargetManager::Instance().ReleaseRenderTargetTextures();
 
-				if (m_pyGraphic.RestoreDevice())					
-				{
-					CRenderTargetManager::Instance().CreateRenderTargetTextures();
+				if (m_pyGraphic.RestoreDevice())
 					rkBG.CreateCharacterShadowTexture();
-				}
 				else
 					canRender = false;
 			}
@@ -1398,8 +1390,6 @@ void CPythonApplication::Destroy()
 	m_kWndMgr.Destroy();
 
 	CPythonSystem::Instance().SaveConfig();
-
-	m_kRenderTargetManager.Destroy();
 
 	DestroyCollisionInstanceSystem();
 

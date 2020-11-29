@@ -631,7 +631,6 @@ bool RunMainScript(CPythonLauncher& pyLauncher, const char* lpCmdLine)
 	initsafebox();
 	initguild();
 	initServerStateChecker();
-	initRenderTarget();
 	initShining();
 #ifdef __USE_CYTHON__
 	// don't add this line if you're implementing cython via .pyd:

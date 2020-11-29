@@ -251,15 +251,6 @@
     <ClCompile Include="TextFileLoader.cpp">
       <Filter>Text</Filter>
     </ClCompile>
-    <ClCompile Include="CRenderTarget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CRenderTargetManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GrpRenderTargetTexture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AttributeData.h">
@@ -501,15 +492,6 @@
     </ClInclude>
     <ClInclude Include="TextFileLoader.h">
       <Filter>Text</Filter>
-    </ClInclude>
-    <ClInclude Include="CRenderTarget.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CRenderTargetManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GrpRenderTargetTexture.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
