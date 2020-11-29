@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../eterBase/Utils.h"
+#include <cstdint>
 
 namespace UI
 {
@@ -200,6 +201,19 @@ namespace UI
 			BOOL IsWindow() { return FALSE; }
 	};
 
+	class CUiRenderTarget : public CWindow
+	{
+	public:
+		CUiRenderTarget(PyObject * ppyObject);
+		virtual ~CUiRenderTarget();
+
+		bool SetRenderTarget(uint8_t index);
+
+	protected:
+		DWORD m_dwIndex;
+		void OnRender();
+	};
+	
 	class CBox : public CWindow
 	{
 		public:

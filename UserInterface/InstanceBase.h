@@ -1184,6 +1184,11 @@ class CInstanceBase
 	protected:
 		DWORD					m_dwDuelMode;
 		DWORD					m_dwEmoticonTime;
+	protected:
+		bool m_IsAlwaysRender;
+	public:
+		bool IsAlwaysRender();
+		void SetAlwaysRender(bool val);
 };
 
 inline int RaceToJob(int race)

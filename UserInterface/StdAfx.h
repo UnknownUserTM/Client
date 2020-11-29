@@ -64,6 +64,7 @@ void initnet();
 void initPlayer();
 void initSectionDisplayer();
 void initServerStateChecker();
+void initRenderTarget();
 void initTrade();
 void initMiniMap();
 void initProfiler();
