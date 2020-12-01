@@ -570,7 +570,7 @@ void CPythonTextTail::RegisterCharacterTextTail(DWORD dwGuildID, DWORD dwVirtual
 											 c_rColor);
 
 	CGraphicTextInstance * pTextInstance = pTextTail->pTextInstance;
-	pTextInstance->SetOutline(true);
+//	pTextInstance->SetOutline(true);
 	pTextInstance->SetVerticalAlign(CGraphicTextInstance::VERTICAL_ALIGN_BOTTOM);
 
 	pTextTail->pMarkInstance=NULL;
@@ -606,7 +606,7 @@ void CPythonTextTail::RegisterCharacterTextTail(DWORD dwGuildID, DWORD dwVirtual
 		CGraphicTextInstance *& prGuildNameInstance = pTextTail->pGuildNameTextInstance;
 		prGuildNameInstance = CGraphicTextInstance::New();
 		prGuildNameInstance->SetTextPointer(ms_pFont);
-		prGuildNameInstance->SetOutline(true);
+//		prGuildNameInstance->SetOutline(true);
 		prGuildNameInstance->SetHorizonalAlign(CGraphicTextInstance::HORIZONTAL_ALIGN_CENTER);
 		prGuildNameInstance->SetVerticalAlign(CGraphicTextInstance::VERTICAL_ALIGN_BOTTOM);
 		prGuildNameInstance->SetValue(strGuildName.c_str());
@@ -702,7 +702,7 @@ void CPythonTextTail::RegisterChatTail(DWORD VirtualID, const char * c_szChat)
 	// END_OF_TEXTTAIL_LIVINGTIME_CONTROL
 
 	pTextTail->bNameFlag = TRUE;
-	pTextTail->pTextInstance->SetOutline(true);
+//	pTextTail->pTextInstance->SetOutline(true);
 	pTextTail->pTextInstance->SetVerticalAlign(CGraphicTextInstance::VERTICAL_ALIGN_BOTTOM);
 	m_ChatTailMap.insert(TTextTailMap::value_type(VirtualID, pTextTail));
 }
@@ -745,7 +745,7 @@ void CPythonTextTail::RegisterInfoTail(DWORD VirtualID, const char * c_szChat)
 	// END_OF_TEXTTAIL_LIVINGTIME_CONTROL
 
 	pTextTail->bNameFlag = FALSE;
-	pTextTail->pTextInstance->SetOutline(true);
+//	pTextTail->pTextInstance->SetOutline(true);
 	pTextTail->pTextInstance->SetVerticalAlign(CGraphicTextInstance::VERTICAL_ALIGN_BOTTOM);
 	m_ChatTailMap.insert(TTextTailMap::value_type(VirtualID, pTextTail));
 }
@@ -1004,7 +1004,7 @@ void CPythonTextTail::AttachTitle(DWORD dwVID, const char * c_szName, const D3DX
 	{
 		prTitle = CGraphicTextInstance::New();
 		prTitle->SetTextPointer(ms_pFont);
-		prTitle->SetOutline(true);
+//		prTitle->SetOutline(true);
 
 		if (LocaleService_IsEUROPE())
 			prTitle->SetHorizonalAlign(CGraphicTextInstance::HORIZONTAL_ALIGN_RIGHT);
@@ -1057,7 +1057,7 @@ void CPythonTextTail::AttachLevel(DWORD dwVID, const char * c_szText, const D3DX
 	{
 		prLevel = CGraphicTextInstance::New();
 		prLevel->SetTextPointer(ms_pFont);
-		prLevel->SetOutline(true);
+//		prLevel->SetOutline(true);
 
 		prLevel->SetHorizonalAlign(CGraphicTextInstance::HORIZONTAL_ALIGN_RIGHT);
 		prLevel->SetVerticalAlign(CGraphicTextInstance::VERTICAL_ALIGN_BOTTOM);
