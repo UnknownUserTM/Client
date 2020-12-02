@@ -1709,12 +1709,16 @@ namespace UI
 
 	void CButton::Enable()
 	{
+		if(m_bEnable)
+			return;
 		SetUp();
 		m_bEnable = TRUE;
 	}
 
 	void CButton::Disable()
 	{
+		if(!m_bEnable)
+			return;
 		m_bEnable = FALSE;
 		if (!m_disableVisual.IsEmpty())
 			SetCurrentVisual(&m_disableVisual);
