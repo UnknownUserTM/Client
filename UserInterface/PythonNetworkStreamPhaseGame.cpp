@@ -2731,7 +2731,14 @@ bool CPythonNetworkStream::RecvTargetInfoPacket()
 			if (pInstTarget->IsEnemy() || pInstTarget->IsStone())
 			{
 				PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "BINARY_AddTargetMonsterDropInfo", 
+				// Py_BuildValue("(iii)", pInfoTargetPacket.race, pInfoTargetPacket.dwVnum, pInfoTargetPacket.count));
+				
+#ifdef ENABLE_SEND_TARGET_INFO_EXTENDED
+				Py_BuildValue("(iiii)", pInfoTargetPacket.race, pInfoTargetPacket.dwVnum, pInfoTargetPacket.count, pInfoTargetPacket.rarity));
+#else
 				Py_BuildValue("(iii)", pInfoTargetPacket.race, pInfoTargetPacket.dwVnum, pInfoTargetPacket.count));
+#endif
+
 				PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "BINARY_RefreshTargetMonsterDropInfo", Py_BuildValue("(i)", pInfoTargetPacket.race));
 			}
 			else

@@ -2072,13 +2072,25 @@ typedef struct packet_target
 } TPacketGCTarget;
 
 #ifdef ENABLE_SEND_TARGET_INFO
+// typedef struct packet_target_info
+// {
+	// BYTE	header;
+	// DWORD	dwVID;
+	// DWORD	race;
+	// DWORD	dwVnum;
+	// BYTE	count;
+// } TPacketGCTargetInfo;
+
 typedef struct packet_target_info
 {
 	BYTE	header;
 	DWORD	dwVID;
 	DWORD	race;
 	DWORD	dwVnum;
-	BYTE	count;
+	WORD	count;
+#ifdef ENABLE_SEND_TARGET_INFO_EXTENDED
+	DWORD	rarity;
+#endif
 } TPacketGCTargetInfo;
 
 typedef struct packet_target_info_load
