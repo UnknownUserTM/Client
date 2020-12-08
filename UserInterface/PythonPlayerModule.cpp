@@ -2415,6 +2415,11 @@ void initPlayer()
 	PyModule_AddIntConstant(poModule, "POINT_PC_BANG_EXP_BONUS",		POINT_PC_BANG_EXP_BONUS);
 	PyModule_AddIntConstant(poModule, "POINT_PC_BANG_DROP_BONUS",		POINT_PC_BANG_DROP_BONUS);
 
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_STONE",		POINT_ATTBONUS_STONE);
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_BOSS",		POINT_ATTBONUS_BOSS);
+	PyModule_AddIntConstant(poModule, "POINT_DEFBONUS_MONSTER",		POINT_DEFBONUS_MONSTER);
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_PLAYER",		POINT_ATTBONUS_PLAYER);
+
 	PyModule_AddIntConstant(poModule, "ENERGY",		POINT_ENERGY);
 	PyModule_AddIntConstant(poModule, "ENERGY_END_TIME",		POINT_ENERGY_END_TIME);
 
