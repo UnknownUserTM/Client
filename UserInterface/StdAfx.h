@@ -83,6 +83,9 @@ void initguild();
 void initMessenger();
 void initShining();
 void initLanguageManager();
+#ifdef RENDER_TARGED
+void initRenderTarget();
+#endif
 extern const std::string& ApplicationStringTable_GetString(DWORD dwID);
 extern const std::string& ApplicationStringTable_GetString(DWORD dwID, LPCSTR szKey);
 

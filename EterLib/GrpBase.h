@@ -3,6 +3,7 @@
 #include "GrpDetector.h"
 #include "Ray.h"
 #include <vector>
+#include "../UserInterface/Locale_inc.h"
 
 void PixelPositionToD3DXVECTOR3(const D3DXVECTOR3& c_rkPPosSrc, D3DXVECTOR3* pv3Dst);
 void D3DXVECTOR3ToPixelPosition(const D3DXVECTOR3& c_rv3Src, D3DXVECTOR3* pv3Dst);
@@ -162,7 +163,15 @@ class CGraphicBase
 		void		SetOrtho2D(float hres, float vres, float zres);
 		void		SetOrtho3D(float hres, float vres, float zmin, float zmax);
 		void		SetPerspective(float fov, float aspect, float nearz, float farz);
+#ifdef RENDER_TARGED
+		float		GetFOV() const;
+
+		float		GetAspect() const;
+		float		GetNear() const;
+		float		GetFar() const;
+#else
 		float		GetFOV();
+#endif
 		void		GetClipPlane(float * fNearY, float * fFarY)
 		{
 			*fNearY = ms_fNearY;

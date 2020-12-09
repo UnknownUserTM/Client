@@ -169,6 +169,9 @@ void CPythonApplication::RenderGame()
 {
 	if (!PERF_CHECKER_RENDER_GAME)
 	{
+#ifdef RENDER_TARGED
+		m_kRenderTargetManager.RenderBackgrounds();
+#endif
 		float fAspect=m_kWndMgr.GetAspect();
 		float fFarClip=m_pyBackground.GetFarClip();
 
@@ -178,7 +181,9 @@ void CPythonApplication::RenderGame()
 
 		m_kChrMgr.Deform();
 		m_kEftMgr.Update();
-
+#ifdef RENDER_TARGED
+		m_kRenderTargetManager.DeformModels();
+#endif
 		m_pyBackground.RenderCharacterShadowToTexture();
 
 		m_pyGraphic.SetGameRenderState();
@@ -201,7 +206,9 @@ void CPythonApplication::RenderGame()
 
 		m_pyBackground.SetCharacterDirLight();
 		m_kChrMgr.Render();
-
+#ifdef RENDER_TARGED
+		m_kRenderTargetManager.RenderModels();
+#endif
 		m_pyBackground.SetBackgroundDirLight();
 		m_pyBackground.RenderWater();
 		m_pyBackground.RenderSnow();
@@ -338,6 +345,10 @@ void CPythonApplication::UpdateGame()
 		s.SetPerspective(30.0f,fAspect, 100.0f, fFarClip);
 		s.BuildViewFrustum();
 	}
+
+#ifdef RENDER_TARGED
+	m_kRenderTargetManager.UpdateModels();
+#endif
 
 	DWORD t3=ELTimer_GetMSec();
 	TPixelPosition kPPosMainActor;
@@ -688,15 +699,24 @@ bool CPythonApplication::Process()
 		}
 		else
 		{
-			if (m_pyGraphic.IsLostDevice())
+			if (m_pyGraphic.IsLostDevice())CPythonSystem::Instance().SaveConfig();
 			{
 				CPythonBackground& rkBG = CPythonBackground::Instance();
 				rkBG.ReleaseCharacterShadowTexture();
-
+#ifdef RENDER_TARGED
+				if (m_pyGraphic.RestoreDevice())
+				{
+					CRenderTargetManager::Instance().CreateRenderTargetTextures();
+					rkBG.CreateCharacterShadowTexture();
+				}
+				else
+					canRender = false;
+#else
 				if (m_pyGraphic.RestoreDevice())
 					rkBG.CreateCharacterShadowTexture();
 				else
 					canRender = false;
+#endif
 			}
 		}
 
@@ -1390,7 +1410,9 @@ void CPythonApplication::Destroy()
 	m_kWndMgr.Destroy();
 
 	CPythonSystem::Instance().SaveConfig();
-
+#ifdef RENDER_TARGED
+	m_kRenderTargetManager.Destroy();
+#endif
 	DestroyCollisionInstanceSystem();
 
 	m_pySystem.SaveInterfaceStatus();

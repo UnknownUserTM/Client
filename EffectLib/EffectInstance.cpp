@@ -267,6 +267,9 @@ void CEffectInstance::__Initialize()
 {
 	m_isAlive = FALSE;
 	m_dwFrame = 0;
+#ifdef RENDER_TARGED_SHINING
+	m_ignoreFrustum = false;
+#endif
 	m_pSoundInstanceVector = NULL;
 	m_fBoundingSphereRadius = 0.0f;
 	m_v3BoundingSpherePosition.x = m_v3BoundingSpherePosition.y = m_v3BoundingSpherePosition.z = 0.0f;

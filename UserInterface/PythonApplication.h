@@ -42,6 +42,11 @@
 #include "AbstractApplication.h"
 #include "MovieMan.h"
 
+#ifdef RENDER_TARGED
+#include "../eterLib/CRenderTarget.h"
+#include "../eterLib/CRenderTargetManager.h"
+#endif
+
 class CPythonApplication : public CMSApplication, public CInputKeyboard, public IAbstractApplication
 {
 	public:
@@ -352,6 +357,9 @@ class CPythonApplication : public CMSApplication, public CInputKeyboard, public 
 
 		CPythonSystem				m_pySystem;
 
+#ifdef RENDER_TARGED
+		CRenderTargetManager		m_kRenderTargetManager;
+#endif
 
 		PyObject *					m_poMouseHandler;
 		D3DXVECTOR3					m_v3CenterPosition;

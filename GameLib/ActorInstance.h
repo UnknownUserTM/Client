@@ -495,6 +495,9 @@ class CActorInstance : public IActorInstance, public IFlyTargetableObject
 		// ETC
 		void		UpdateAttribute();
 		bool		IntersectDefendingSphere();
+#ifdef RENDER_TARGED_SHINING
+		void		RenderAllAttachingEffect();
+#endif
 		float		GetHeight();
 		void		ShowAllAttachingEffect();
 		void		HideAllAttachingEffect();

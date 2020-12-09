@@ -238,6 +238,36 @@ PyObject * wndMgrRegisterBar(PyObject * poSelf, PyObject * poArgs)
 	return Py_BuildValue("i", pWindow);
 }
 
+#ifdef RENDER_TARGED
+PyObject* wndMgrRegisterRenderTarget(PyObject* poSelf, PyObject* poArgs)
+{
+	PyObject* po;
+	if (!PyTuple_GetObject(poArgs, 0, &po))
+		return Py_BuildException();
+	char* szLayer;
+	if (!PyTuple_GetString(poArgs, 1, &szLayer))
+		return Py_BuildException();
+
+	UI::CWindow* pWindow = UI::CWindowManager::Instance().RegisterRenderTarget(po, szLayer);
+	return Py_BuildValue("i", pWindow);
+}
+PyObject* wndRenderTargetSetRenderTarget(PyObject* poSelf, PyObject* poArgs)
+{
+	UI::CWindow* pWindow;
+	if (!PyTuple_GetWindow(poArgs, 0, &pWindow))
+		return Py_BuildException();
+	int index;
+	if (!PyTuple_GetInteger(poArgs, 1, &index))
+		return Py_BuildException();
+
+	if (pWindow->IsType(UI::CUiRenderTarget::Type()))
+	{
+		((UI::CUiRenderTarget*)pWindow)->SetRenderTarget(index);
+	}
+	return Py_BuildNone();
+}
+#endif
+
 // Line
 PyObject * wndMgrRegisterLine(PyObject * poSelf, PyObject * poArgs)
 {
@@ -2394,6 +2424,11 @@ void initwndMgr()
 		{ "Destroy",					wndMgrDestroy,						METH_VARARGS },
 		{ "AddFlag",					wndMgrAddFlag,						METH_VARARGS },
 		{ "IsRTL",						wndMgrIsRTL,						METH_VARARGS },
+
+#ifdef RENDER_TARGED
+		{ "RegisterRenderTarget", wndMgrRegisterRenderTarget, METH_VARARGS },
+		{ "SetRenderTarget", wndRenderTargetSetRenderTarget, METH_VARARGS },
+#endif
 
 		// Base Window
 		{ "SetName",					wndMgrSetName,						METH_VARARGS },

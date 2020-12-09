@@ -632,6 +632,9 @@ bool RunMainScript(CPythonLauncher& pyLauncher, const char* lpCmdLine)
 	initguild();
 	initServerStateChecker();
 	initShining();
+#ifdef RENDER_TARGED
+	initRenderTarget();
+#endif
 #ifdef __USE_CYTHON__
 	// don't add this line if you're implementing cython via .pyd:
 	// initrootlibManager();
