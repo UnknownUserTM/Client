@@ -41,6 +41,9 @@
     <Filter Include="Security">
       <UniqueIdentifier>{2c6bf558-7d93-4032-884c-8b681790a72c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="#include">
+      <UniqueIdentifier>{a13276ea-abee-43af-8bcf-cb2bbe7cd21e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AffectFlagContainer.cpp">
@@ -321,6 +324,9 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="PythonLanguage.cpp" />
+    <ClCompile Include="CPythonRenderTargetModule.cpp">
+      <Filter>#include</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AffectFlagContainer.h">

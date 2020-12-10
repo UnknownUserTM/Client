@@ -2,6 +2,8 @@
 
 #include "EffectElementBase.h"
 
+#include "../UserInterface/Locale_inc.h"
+
 class CEffectElementBaseInstance
 {
 	public:
@@ -20,6 +22,13 @@ class CEffectElementBaseInstance
 		bool isActive();
 		void SetActive();
 		void SetDeactive();
+
+#ifdef RENDER_TARGED_SHINING
+	protected:
+		bool m_ignoreFrustum;
+	public:
+		void SetIgnoreFrustum(bool frustum) { m_ignoreFrustum = frustum; }
+#endif
 
 	protected:
 		virtual void OnSetDataPointer(CEffectElementBase * pElement) = 0;

@@ -763,6 +763,14 @@ float CActorInstance::GetHeight()
 	return CGraphicThingInstance::GetHeight();
 }
 
+#ifdef RENDER_TARGED_SHINING
+void CActorInstance::RenderAllAttachingEffect()
+{
+	for (const auto& it : m_AttachingEffectList)
+		CEffectManager::Instance().RenderOne(it.dwEffectIndex);
+}
+#endif
+
 bool CActorInstance::IntersectDefendingSphere()
 {
 	for (TCollisionPointInstanceList::iterator it = m_DefendingPointInstanceList.begin(); it != m_DefendingPointInstanceList.end(); ++it)

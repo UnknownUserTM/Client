@@ -22,3 +22,6 @@
 #define CLIENT_VERSION "20191020" //YYYYMMdd
 #define ENABLE_NEW_TYPE_OF_POTION // Permanente Buffitems an-/ausschalten
 #define ENABLE_SEND_TARGET_INFO_EXTENDED
+
+#define RENDER_TARGED
+#define RENDER_TARGED_SHINING

@@ -30,7 +30,11 @@ class CParticleSystemInstance : public CEffectElementBaseInstance
 				TParticleInstanceList::iterator itor = m_ParticleInstanceListVector[dwFrameIndex].begin();
 				for (; itor != m_ParticleInstanceListVector[dwFrameIndex].end(); ++itor)
 				{
+#ifdef RENDER_TARGED_SHINING
+					if (!InFrustum(*itor) && !m_ignoreFrustum)
+#else
 					if (!InFrustum(*itor))
+#endif
 						return;
 					FunObj(*itor);
 				}

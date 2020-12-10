@@ -28,7 +28,9 @@ class CEffectManager : public CScreen, public CSingleton<CEffectManager>
 		void UpdateSound();
 		void Update();
 		void Render();
-
+#ifdef RENDER_TARGED_SHINING
+		void RenderOne(DWORD id);
+#endif
 		void GetInfo(std::string* pstInfo);
 
 		bool IsAliveEffect(DWORD dwInstanceIndex);

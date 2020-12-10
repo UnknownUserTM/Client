@@ -8,3 +8,5 @@ Metin2Client_VC100.opensdf
 *.ipch
 *.ipch
 ipch/userinterface_vc90-a9b619cd/userinterface-d9c6fff6.ipch
+.vs/Metin2Client_VC100/v16/Browse.VC.db
+.vs/Metin2Client_VC100/v16/Solution.VC.db

@@ -39,6 +39,7 @@
     <SccProvider>
     </SccProvider>
     <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Distribute|Win32'" Label="Configuration">
@@ -50,7 +51,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v120_xp</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MfcDebug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -282,6 +283,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -332,6 +334,8 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CollisionData.cpp" />
     <ClCompile Include="ColorTransitionHelper.cpp" />
+    <ClCompile Include="CRenderTarget.cpp" />
+    <ClCompile Include="CRenderTargetManager.cpp" />
     <ClCompile Include="Decal.cpp" />
     <ClCompile Include="EnvironmentMap.cpp" />
     <ClCompile Include="FileLoaderThread.cpp" />
@@ -345,6 +349,7 @@
     <ClCompile Include="GrpObjectInstance.cpp" />
     <ClCompile Include="GrpPixelShader.cpp" />
     <ClCompile Include="GrpRatioInstance.cpp" />
+    <ClCompile Include="GrpRenderTargetTexture.cpp" />
     <ClCompile Include="GrpShadowTexture.cpp" />
     <ClCompile Include="GrpVertexBuffer.cpp" />
     <ClCompile Include="GrpVertexBufferDynamic.cpp" />
@@ -412,6 +417,8 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CollisionData.h" />
     <ClInclude Include="ColorTransitionHelper.h" />
+    <ClInclude Include="CRenderTarget.h" />
+    <ClInclude Include="CRenderTargetManager.h" />
     <ClInclude Include="Decal.h" />
     <ClInclude Include="Dynamic.h" />
     <ClInclude Include="EnvironmentMap.h" />
@@ -428,6 +435,7 @@
     <ClInclude Include="GrpObjectInstance.h" />
     <ClInclude Include="GrpPixelShader.h" />
     <ClInclude Include="GrpRatioInstance.h" />
+    <ClInclude Include="GrpRenderTargetTexture.h" />
     <ClInclude Include="GrpShadowTexture.h" />
     <ClInclude Include="GrpVertexBuffer.h" />
     <ClInclude Include="GrpVertexBufferDynamic.h" />
