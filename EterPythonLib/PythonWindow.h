@@ -215,6 +215,21 @@ namespace UI
 			DWORD m_dwColor;
 	};
 
+#ifdef RENDER_TARGED
+	class CUiRenderTarget : public CWindow
+	{
+	public:
+		CUiRenderTarget(PyObject* ppyObject);
+		virtual ~CUiRenderTarget();
+
+		bool SetRenderTarget(uint8_t index);
+
+	protected:
+		DWORD m_dwIndex;
+		void OnRender();
+	};
+#endif
+
 	class CBar : public CWindow
 	{
 		public:

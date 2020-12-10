@@ -552,6 +552,9 @@ m_pPreviousCamera(NULL)
 	AddCamera(DEFAULT_ORTHO_CAMERA);
 
 	SetCurrentCamera(DEFAULT_PERSPECTIVE_CAMERA);
+#ifdef RENDER_TARGED
+	AddCamera(SHOPDECO_CAMERA);
+#endif
 }
 
 CCameraManager::~CCameraManager()

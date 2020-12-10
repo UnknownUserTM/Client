@@ -43,10 +43,17 @@ class CGraphicExpandedImageInstance : public CGraphicImageInstance
 		BOOL OnIsType(DWORD dwType);
 
 	protected:
+#ifdef RENDER_TARGED
+		float m_fDepth;
+		D3DXVECTOR2 m_v2Origin;
+		float m_fRotation;
+#else
 		float m_fDepth;
 		D3DXVECTOR2 m_v2Origin;
 		D3DXVECTOR2 m_v2Scale;
 		float m_fRotation;
+#endif
+
 		RECT m_RenderingRect;
 		int m_iRenderingMode;
 

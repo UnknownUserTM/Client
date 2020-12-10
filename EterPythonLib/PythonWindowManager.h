@@ -77,6 +77,9 @@ namespace UI
 			CWindow *	RegisterToggleButton(PyObject * po, const char * c_szLayer);
 			CWindow *	RegisterDragButton(PyObject * po, const char * c_szLayer);
 			CWindow *	RegisterBox(PyObject * po, const char * c_szLayer);
+#ifdef RENDER_TARGED
+			CWindow* RegisterRenderTarget(PyObject* po, const char* c_szLayer);
+#endif
 			CWindow *	RegisterBar(PyObject * po, const char * c_szLayer);
 			CWindow *	RegisterLine(PyObject * po, const char * c_szLayer);
 			CWindow *	RegisterBar3D(PyObject * po, const char * c_szLayer);

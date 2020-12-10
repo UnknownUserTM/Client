@@ -1502,6 +1502,12 @@ void initapp()
 #else
 	PyModule_AddIntConstant(poModule, "ENABLE_LANGUAGE_SYSTEM", 0);
 #endif
+
+#ifdef RENDER_TARGED
+	PyModule_AddIntConstant(poModule, "RENDER_TARGED", 1);
+#else
+	PyModule_AddIntConstant(poModule, "RENDER_TARGED", 0);
+#endif
 	
 #if defined(WJ_SHOW_MOB_INFO)
 	PyModule_AddIntConstant(poModule, "WJ_SHOW_MOB_INFO", 1);

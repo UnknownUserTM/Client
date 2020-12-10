@@ -5,6 +5,7 @@
 #include "../gamelib/GameLibDefines.h"
 
 #include "AffectFlagContainer.h"
+#include "Locale_inc.h"
 
 class CInstanceBase
 {
@@ -504,7 +505,6 @@ class CInstanceBase
 		void					AttachTextTail();
 		void					DetachTextTail();
 		void					UpdateTextTailLevel(DWORD level);
-
 		void					RefreshTextTail();
 		void					RefreshTextTailTitle();
 
@@ -1184,6 +1184,14 @@ class CInstanceBase
 	protected:
 		DWORD					m_dwDuelMode;
 		DWORD					m_dwEmoticonTime;
+
+#ifdef RENDER_TARGED
+	protected:
+		bool m_IsAlwaysRender;
+	public:
+		bool IsAlwaysRender();
+		void SetAlwaysRender(bool val);
+#endif
 };
 
 inline int RaceToJob(int race)

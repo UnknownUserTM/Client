@@ -79,7 +79,9 @@ void CEffectElementBaseInstance::Initialize()
 
 	m_bStart = false;
 	m_fRemainingTime = 0.0f;
-
+#ifdef RENDER_TARGED_SHINING
+	m_ignoreFrustum = false;
+#endif
 	OnInitialize();
 }
 

@@ -2644,6 +2644,12 @@ bool CInstanceBase::__IsInViewFrustum()
 
 bool CInstanceBase::__CanRender()
 {
+#ifdef RENDER_TARGED
+	if (IsAlwaysRender())
+	{
+		return true;
+	}
+#endif
 	if (!__IsInViewFrustum())
 		return false;
 	if (IsAffect(AFFECT_INVISIBILITY))
@@ -3320,6 +3326,9 @@ void CInstanceBase::__Initialize()
 	m_bDamageEffectType = false;
 	m_dwDuelMode = DUEL_NONE;
 	m_dwEmoticonTime = 0;
+#ifdef RENDER_TARGED
+	m_IsAlwaysRender = false;
+#endif
 }
 
 CInstanceBase::CInstanceBase()
@@ -3338,3 +3347,14 @@ void CInstanceBase::GetBoundBox(D3DXVECTOR3 * vtMin, D3DXVECTOR3 * vtMax)
 	m_GraphicThingInstance.GetBoundBox(vtMin, vtMax);
 }
 
+#ifdef RENDER_TARGED
+bool CInstanceBase::IsAlwaysRender()
+{
+	return m_IsAlwaysRender;
+}
+
+void CInstanceBase::SetAlwaysRender(bool val)
+{
+	m_IsAlwaysRender = val;
+}
+#endif

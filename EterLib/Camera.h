@@ -13,6 +13,7 @@
 
 #include "../eterBase/Singleton.h"
 #include "Ray.h"
+#include "../UserInterface/Locale_inc.h"
 
 const float CAMERA_TARGET_STANDARD = 100.0f;
 const float CAMERA_TARGET_FACE = 150.0f;
@@ -255,6 +256,9 @@ class CCameraManager : public CSingleton<CCameraManager>
 			NO_CURRENT_CAMERA,
 			DEFAULT_PERSPECTIVE_CAMERA,
 			DEFAULT_ORTHO_CAMERA,
+#ifdef RENDER_TARGED
+			SHOPDECO_CAMERA,
+#endif
 			CAMERA_MAX = 255
 		};
 

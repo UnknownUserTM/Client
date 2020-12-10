@@ -36,6 +36,9 @@
     <Filter Include="Text">
       <UniqueIdentifier>{d186481b-0ebc-4851-9963-445ece054f66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="#include">
+      <UniqueIdentifier>{c1e6b53a-7376-47c7-8ebf-b14478f85dc5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AttributeData.cpp">
@@ -250,6 +253,15 @@
     </ClCompile>
     <ClCompile Include="TextFileLoader.cpp">
       <Filter>Text</Filter>
+    </ClCompile>
+    <ClCompile Include="CRenderTarget.cpp">
+      <Filter>#include</Filter>
+    </ClCompile>
+    <ClCompile Include="CRenderTargetManager.cpp">
+      <Filter>#include</Filter>
+    </ClCompile>
+    <ClCompile Include="GrpRenderTargetTexture.cpp">
+      <Filter>#include</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -492,6 +504,15 @@
     </ClInclude>
     <ClInclude Include="TextFileLoader.h">
       <Filter>Text</Filter>
+    </ClInclude>
+    <ClInclude Include="CRenderTarget.h">
+      <Filter>#include</Filter>
+    </ClInclude>
+    <ClInclude Include="CRenderTargetManager.h">
+      <Filter>#include</Filter>
+    </ClInclude>
+    <ClInclude Include="GrpRenderTargetTexture.h">
+      <Filter>#include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 #include "GrpIndexBuffer.h"
 #include "GrpVertexBufferDynamic.h"
 #include "Pool.h"
+#include "../UserInterface/Locale_inc.h"
 
 class CGraphicImageInstance
 {
@@ -21,7 +22,9 @@ class CGraphicImageInstance
 
 		void SetDiffuseColor(float fr, float fg, float fb, float fa);
 		void SetPosition(float fx, float fy);
-
+#ifdef RENDER_TARGED
+		void SetScale(float fx, float fy);
+#endif
 		void SetImagePointer(CGraphicImage* pImage);
 		void ReloadImagePointer(CGraphicImage* pImage);
 		bool IsEmpty() const;
@@ -46,6 +49,9 @@ class CGraphicImageInstance
 	protected:
 		D3DXCOLOR m_DiffuseColor;
 		D3DXVECTOR2 m_v2Position;
+#ifdef RENDER_TARGED
+		D3DXVECTOR2 m_v2Scale;
+#endif
 
 		CGraphicImage::TRef m_roImage;
 
