@@ -1437,7 +1437,7 @@ typedef struct packet_add_char
 	long	z;
 	BYTE	bType;
 	WORD	wRaceNum;
-	BYTE	bMovingSpeed;
+	WORD	wMovingSpeed;
 	BYTE	bAttackSpeed;
 	BYTE	bStateFlag;
 	DWORD	dwAffectFlag[2];
@@ -1459,7 +1459,7 @@ typedef struct packet_add_char2
 	BYTE		bType;
     WORD        wRaceNum;
     WORD        awPart[CHR_EQUIPPART_NUM];
-    BYTE        bMovingSpeed;
+    WORD        wMovingSpeed;
     BYTE        bAttackSpeed;
 
     BYTE        bStateFlag;
@@ -1478,7 +1478,7 @@ typedef struct packet_update_char
     DWORD       dwVID;
 
     WORD        awPart[CHR_EQUIPPART_NUM];
-    BYTE        bMovingSpeed;
+    WORD        wMovingSpeed;
 	BYTE		bAttackSpeed;
 
     BYTE        bStateFlag;
@@ -1497,7 +1497,7 @@ typedef struct packet_update_char2
     DWORD       dwVID;
 
     WORD        awPart[CHR_EQUIPPART_NUM];
-    BYTE        bMovingSpeed;
+    WORD        wMovingSpeed;
 	BYTE		bAttackSpeed;
 
     BYTE        bStateFlag;

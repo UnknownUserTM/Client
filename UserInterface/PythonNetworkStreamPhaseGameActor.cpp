@@ -87,7 +87,7 @@ bool CPythonNetworkStream::RecvCharacterAppendPacket()
 
 	SNetworkActorData kNetActorData;
 	kNetActorData.m_bType=chrAddPacket.bType;
-	kNetActorData.m_dwMovSpd=chrAddPacket.bMovingSpeed;
+	kNetActorData.m_dwMovSpd=chrAddPacket.wMovingSpeed;
 	kNetActorData.m_dwAtkSpd=chrAddPacket.bAttackSpeed;
 	kNetActorData.m_dwRace=chrAddPacket.wRaceNum;
 
@@ -189,7 +189,7 @@ bool CPythonNetworkStream::RecvCharacterAppendPacketNew()
 	kNetActorData.m_bType=chrAddPacket.bType;
 	kNetActorData.m_dwGuildID=chrAddPacket.dwGuild;
 	kNetActorData.m_dwEmpireID=chrAddPacket.bEmpire;
-	kNetActorData.m_dwMovSpd=chrAddPacket.bMovingSpeed;
+	kNetActorData.m_dwMovSpd=chrAddPacket.wMovingSpeed;
 	kNetActorData.m_dwAtkSpd=chrAddPacket.bAttackSpeed;
 	kNetActorData.m_dwRace=chrAddPacket.wRaceNum;
 	kNetActorData.m_dwArmor=chrAddPacket.awPart[CHR_EQUIPPART_ARMOR];
@@ -218,7 +218,7 @@ bool CPythonNetworkStream::RecvCharacterUpdatePacket()
 
 	SNetworkUpdateActorData kNetUpdateActorData;
 	kNetUpdateActorData.m_dwGuildID=chrUpdatePacket.dwGuildID;
-	kNetUpdateActorData.m_dwMovSpd=chrUpdatePacket.bMovingSpeed;
+	kNetUpdateActorData.m_dwMovSpd=chrUpdatePacket.wMovingSpeed;
 	kNetUpdateActorData.m_dwAtkSpd=chrUpdatePacket.bAttackSpeed;
 	kNetUpdateActorData.m_dwArmor=chrUpdatePacket.awPart[CHR_EQUIPPART_ARMOR];
 	kNetUpdateActorData.m_dwWeapon=chrUpdatePacket.awPart[CHR_EQUIPPART_WEAPON];
@@ -244,7 +244,7 @@ bool CPythonNetworkStream::RecvCharacterUpdatePacketNew()
 
 	SNetworkUpdateActorData kNetUpdateActorData;
 	kNetUpdateActorData.m_dwGuildID=chrUpdatePacket.dwGuildID;
-	kNetUpdateActorData.m_dwMovSpd=chrUpdatePacket.bMovingSpeed;
+	kNetUpdateActorData.m_dwMovSpd=chrUpdatePacket.wMovingSpeed;
 	kNetUpdateActorData.m_dwAtkSpd=chrUpdatePacket.bAttackSpeed;
 	kNetUpdateActorData.m_dwArmor=chrUpdatePacket.awPart[CHR_EQUIPPART_ARMOR];
 	kNetUpdateActorData.m_dwWeapon=chrUpdatePacket.awPart[CHR_EQUIPPART_WEAPON];
@@ -438,7 +438,7 @@ bool CPythonNetworkStream::RecvCharacterAppendPacket()
 	SNetworkActorData kNetActorData;
 	kNetActorData.m_dwGuildID=chrAddPacket.dwGuild;
 	kNetActorData.m_dwEmpireID=chrAddPacket.bEmpire;
-	kNetActorData.m_dwMovSpd=chrAddPacket.bMovingSpeed;
+	kNetActorData.m_dwMovSpd=chrAddPacket.wMovingSpeed;
 	kNetActorData.m_dwAtkSpd=chrAddPacket.bAttackSpeed;
 	kNetActorData.m_dwRace=chrAddPacket.wRaceNum;
 	kNetActorData.m_dwShape=chrAddPacket.parts[CRaceData::PART_MAIN];
