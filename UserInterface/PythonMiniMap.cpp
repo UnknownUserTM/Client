@@ -1132,7 +1132,8 @@ bool CPythonMiniMap::GetAtlasPositionInfo(float fScreenX, float fScreenY, float 
 {
 	float fRealX = (fScreenX - m_fAtlasScreenX) * (m_fAtlasMaxX / m_fAtlasImageSizeX);
 	float fRealY = (fScreenY - m_fAtlasScreenY) * (m_fAtlasMaxY / m_fAtlasImageSizeY);
-	
+	*pReturnPosX = fRealX;
+	*pReturnPosY = fRealY;	
 	return true;
 }
 
