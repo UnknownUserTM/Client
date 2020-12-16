@@ -699,11 +699,12 @@ bool CPythonApplication::Process()
 		}
 		else
 		{
-			if (m_pyGraphic.IsLostDevice())CPythonSystem::Instance().SaveConfig();
+			if (m_pyGraphic.IsLostDevice())
 			{
 				CPythonBackground& rkBG = CPythonBackground::Instance();
-				rkBG.ReleaseCharacterShadowTexture();
 #ifdef RENDER_TARGED
+				CRenderTargetManager::Instance().ReleaseRenderTargetTextures();
+				rkBG.ReleaseCharacterShadowTexture();
 				if (m_pyGraphic.RestoreDevice())
 				{
 					CRenderTargetManager::Instance().CreateRenderTargetTextures();
@@ -712,6 +713,7 @@ bool CPythonApplication::Process()
 				else
 					canRender = false;
 #else
+				rkBG.ReleaseCharacterShadowTexture();
 				if (m_pyGraphic.RestoreDevice())
 					rkBG.CreateCharacterShadowTexture();
 				else
