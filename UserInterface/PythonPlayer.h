@@ -286,6 +286,9 @@ class CPythonPlayer : public CSingleton<CPythonPlayer>, public IAbstractPlayer
 		void	SetItemAttribute(TItemPos Cell, DWORD dwAttrIndex, BYTE byType, short sValue);
 		DWORD	GetItemIndex(TItemPos Cell);
 		DWORD	GetItemFlags(TItemPos Cell);
+		DWORD	GetItemAntiFlags(TItemPos Cell);
+		BYTE	GetItemTypeBySlot(TItemPos Cell);
+		BYTE	GetItemSubTypeBySlot(TItemPos Cell);
 		DWORD	GetItemCount(TItemPos Cell);
 		DWORD	GetItemCountByVnum(DWORD dwVnum);
 		DWORD	GetItemMetinSocket(TItemPos Cell, DWORD dwMetinSocketIndex);

@@ -5,6 +5,7 @@
 #endif
 #include "../EterLib/StdAfx.h"
 #include "../ScriptLib/StdAfx.h"
+#include "../UserInterface/Locale_inc.h"
 
 #include "PythonGraphic.h"
 #include "PythonWindowManager.h"

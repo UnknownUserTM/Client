@@ -100,6 +100,21 @@ enum EDragonSoulStepTypes
 	DRAGON_SOUL_STEP_MAX,
 };
 
+#ifdef WJ_ENABLE_TRADABLE_ICON
+enum ETopWindowTypes
+{
+	ON_TOP_WND_NONE,
+	ON_TOP_WND_SHOP,
+	ON_TOP_WND_EXCHANGE,
+	ON_TOP_WND_SAFEBOX,
+	ON_TOP_WND_PRIVATE_SHOP,
+	ON_TOP_WND_ITEM_COMB,
+	ON_TOP_WND_PET_FEED,
+
+	ON_TOP_WND_MAX,
+};
+#endif
+
 #ifdef ENABLE_COSTUME_SYSTEM
 	const DWORD c_Costume_Slot_Start	= c_Equipment_Start + 19;	// [주의] 숫자(19) 하드코딩 주의. 현재 서버에서 코스츔 슬롯은 19부터임. 서버 common/length.h 파일의 EWearPositions 열거형 참고.
 	const DWORD	c_Costume_Slot_Body		= c_Costume_Slot_Start + 0;

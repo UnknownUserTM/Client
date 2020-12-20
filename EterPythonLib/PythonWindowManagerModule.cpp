@@ -3,6 +3,8 @@
 #include "PythonSlotWindow.h"
 #include "PythonGridSlotWindow.h"
 
+
+
 bool PyTuple_GetWindow(PyObject* poArgs, int pos, UI::CWindow ** ppRetWindow)
 {
 	int iHandle;
@@ -14,6 +16,80 @@ bool PyTuple_GetWindow(PyObject* poArgs, int pos, UI::CWindow ** ppRetWindow)
 	*ppRetWindow = (UI::CWindow*)iHandle;
 	return true;
 }
+
+#ifdef WJ_ENABLE_TRADABLE_ICON
+PyObject * wndMgrSetCanMouseEventSlot(PyObject * poSelf, PyObject * poArgs)
+{
+	UI::CWindow * pWnd;
+	if (!PyTuple_GetWindow(poArgs, 0, &pWnd))
+		return Py_BuildException();
+
+	int iSlotIndex;
+	if (!PyTuple_GetInteger(poArgs, 1, &iSlotIndex))
+		return Py_BuildException();
+
+	if (!pWnd->IsType(UI::CSlotWindow::Type()))
+		return Py_BuildException();
+
+	UI::CSlotWindow * pSlotWnd = (UI::CSlotWindow *)pWnd;
+	pSlotWnd->SetCanMouseEventSlot(iSlotIndex);
+	return Py_BuildNone();
+}
+
+PyObject * wndMgrSetCantMouseEventSlot(PyObject * poSelf, PyObject * poArgs)
+{
+	UI::CWindow * pWnd;
+	if (!PyTuple_GetWindow(poArgs, 0, &pWnd))
+		return Py_BuildException();
+
+	int iSlotIndex;
+	if (!PyTuple_GetInteger(poArgs, 1, &iSlotIndex))
+		return Py_BuildException();
+
+	if (!pWnd->IsType(UI::CSlotWindow::Type()))
+		return Py_BuildException();
+
+	UI::CSlotWindow * pSlotWnd = (UI::CSlotWindow *)pWnd;
+	pSlotWnd->SetCantMouseEventSlot(iSlotIndex);
+	return Py_BuildNone();
+}
+
+PyObject * wndMgrSetUsableSlotOnTopWnd(PyObject * poSelf, PyObject * poArgs)
+{
+	UI::CWindow * pWnd;
+	if (!PyTuple_GetWindow(poArgs, 0, &pWnd))
+		return Py_BuildException();
+
+	int iSlotIndex;
+	if (!PyTuple_GetInteger(poArgs, 1, &iSlotIndex))
+		return Py_BuildException();
+
+	if (!pWnd->IsType(UI::CSlotWindow::Type()))
+		return Py_BuildException();
+
+	UI::CSlotWindow * pSlotWnd = (UI::CSlotWindow *)pWnd;
+	pSlotWnd->SetUsableSlotOnTopWnd(iSlotIndex);
+	return Py_BuildNone();
+}
+
+PyObject * wndMgrSetUnusableSlotOnTopWnd(PyObject * poSelf, PyObject * poArgs)
+{
+	UI::CWindow * pWnd;
+	if (!PyTuple_GetWindow(poArgs, 0, &pWnd))
+		return Py_BuildException();
+
+	int iSlotIndex;
+	if (!PyTuple_GetInteger(poArgs, 1, &iSlotIndex))
+		return Py_BuildException();
+
+	if (!pWnd->IsType(UI::CSlotWindow::Type()))
+		return Py_BuildException();
+
+	UI::CSlotWindow * pSlotWnd = (UI::CSlotWindow *)pWnd;
+	pSlotWnd->SetUnusableSlotOnTopWnd(iSlotIndex);
+	return Py_BuildNone();
+}
+#endif
 
 PyObject * wndMgrGetAspect(PyObject * poSelf, PyObject * poArgs)
 {
@@ -2581,7 +2657,12 @@ void initwndMgr()
 		{ "Down",						wndButtonDown,						METH_VARARGS },
 		{ "SetUp",						wndButtonSetUp,						METH_VARARGS },
 		{ "IsDown",						wndButtonIsDown,					METH_VARARGS },
-
+#ifdef WJ_ENABLE_TRADABLE_ICON
+		{ "SetCanMouseEventSlot",		wndMgrSetCanMouseEventSlot,			METH_VARARGS },
+		{ "SetCantMouseEventSlot",		wndMgrSetCantMouseEventSlot,		METH_VARARGS },
+		{ "SetUsableSlotOnTopWnd",		wndMgrSetUsableSlotOnTopWnd,		METH_VARARGS },
+		{ "SetUnusableSlotOnTopWnd",	wndMgrSetUnusableSlotOnTopWnd,		METH_VARARGS },
+#endif
 		// DragButton
 		{ "SetRestrictMovementArea",	wndButtonSetRestrictMovementArea,	METH_VARARGS },
 
