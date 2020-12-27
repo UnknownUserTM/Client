@@ -17,7 +17,6 @@ namespace UI
 		SLOT_STYLE_NONE,
 		SLOT_STYLE_PICK_UP,
 		SLOT_STYLE_SELECT,
-
 	};
 
 	enum ESlotState
@@ -26,11 +25,7 @@ namespace UI
 		SLOT_STATE_CANT_USE	= (1 << 1),
 		SLOT_STATE_DISABLE	= (1 << 2),
 		SLOT_STATE_ALWAYS_RENDER_COVER = (1 << 3),			// 현재 Cover 버튼은 슬롯에 무언가 들어와 있을 때에만 렌더링 하는데, 이 flag가 있으면 빈 슬롯이어도 커버 렌더링
-		//SLOT_STATE_UNUSABLE = (1 << 4),
-#ifdef WJ_ENABLE_TRADABLE_ICON
-		SLOT_STATE_CANT_MOUSE_EVENT		= (1 << 4),
-		SLOT_STATE_UNUSABLE				= (1 << 5),
-#endif
+		SLOT_STATE_UNUSABLE = (1 << 4),
 	};
 
 	class CSlotWindow : public CWindow
@@ -131,12 +126,7 @@ namespace UI
 			void EnableSlot(DWORD dwIndex);
 			void DisableSlot(DWORD dwIndex);
 			BOOL IsEnableSlot(DWORD dwIndex);
-#ifdef WJ_ENABLE_TRADABLE_ICON
-			void SetCanMouseEventSlot(DWORD dwIndex);
-			void SetCantMouseEventSlot(DWORD dwIndex);
-			void SetUsableSlotOnTopWnd(DWORD dwIndex);
-			void SetUnusableSlotOnTopWnd(DWORD dwIndex);
-#endif			
+			
 			void SetUnusableSlot(DWORD dwIndex);
 			void SetUsableSlot(DWORD dwIndex);
 
