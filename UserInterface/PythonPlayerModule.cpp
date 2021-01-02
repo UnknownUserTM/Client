@@ -2420,6 +2420,36 @@ void initPlayer()
 	PyModule_AddIntConstant(poModule, "POINT_DEFBONUS_MONSTER",		POINT_DEFBONUS_MONSTER);
 	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_PLAYER",		POINT_ATTBONUS_PLAYER);
 
+
+	PyModule_AddIntConstant(poModule, "POINT_POISON_PCT",		POINT_POISON_PCT);
+	PyModule_AddIntConstant(poModule, "POINT_STUN_PCT",		POINT_STUN_PCT);
+	PyModule_AddIntConstant(poModule, "POINT_SLOW_PCT",		POINT_SLOW_PCT);
+	// Stark gegen ...
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_HUMAN",		POINT_ATTBONUS_HUMAN);
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_ANIMAL",		POINT_ATTBONUS_ANIMAL);
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_ORC",		POINT_ATTBONUS_ORC);
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_MILGYO",		POINT_ATTBONUS_MILGYO);
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_UNDEAD",		POINT_ATTBONUS_UNDEAD);
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_DEVIL",		POINT_ATTBONUS_DEVIL);
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_INSECT",		POINT_ATTBONUS_INSECT);
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_FIRE",		POINT_ATTBONUS_FIRE);
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_ICE",		POINT_ATTBONUS_ICE);
+	PyModule_AddIntConstant(poModule, "POINT_ATTBONUS_DESERT",		POINT_ATTBONUS_DESERT);
+	
+	// Waffen DEF
+	PyModule_AddIntConstant(poModule, "POINT_RESIST_SWORD",		POINT_RESIST_SWORD);
+	PyModule_AddIntConstant(poModule, "POINT_RESIST_TWOHAND",		POINT_RESIST_TWOHAND);
+	PyModule_AddIntConstant(poModule, "POINT_RESIST_DAGGER",		POINT_RESIST_DAGGER);
+	PyModule_AddIntConstant(poModule, "POINT_RESIST_BELL",		POINT_RESIST_BELL);
+	PyModule_AddIntConstant(poModule, "POINT_RESIST_FAN",		POINT_RESIST_FAN);
+	PyModule_AddIntConstant(poModule, "POINT_RESIST_BOW",		POINT_RESIST_BOW);
+	PyModule_AddIntConstant(poModule, "POINT_RESIST_FIRE",		POINT_RESIST_FIRE);
+	PyModule_AddIntConstant(poModule, "POINT_RESIST_ELEC",		POINT_RESIST_ELEC);
+	PyModule_AddIntConstant(poModule, "POINT_RESIST_MAGIC",		POINT_RESIST_MAGIC);
+	PyModule_AddIntConstant(poModule, "POINT_RESIST_WIND",		POINT_RESIST_WIND);
+
+
+
 	PyModule_AddIntConstant(poModule, "ENERGY",		POINT_ENERGY);
 	PyModule_AddIntConstant(poModule, "ENERGY_END_TIME",		POINT_ENERGY_END_TIME);
 
