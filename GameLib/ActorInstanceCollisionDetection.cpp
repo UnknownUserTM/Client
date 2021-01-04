@@ -595,7 +595,7 @@ BOOL CActorInstance::TestActorCollision(CActorInstance & rVictim)
 	int pListPet[2] = { 34001, 34051 };
 	/************
 	* You can add whatever you like vnum of npc or monster (mob_proto) */
-	int pListGlobal[] = { 9001, 9002, 9003, 9004, 9005, 9006, 20011, 20091, 20092, 20093, 20094, 20095, 30000 };
+	int pListGlobal[] = { 9001, 9002, 9003, 9004, 9005, 9006, 20011, 20091, 20092, 20093, 20094, 20095, 30000, 101 };
 	/************
 	* You can add what mapname you want for enable this stop collission global like pet / npc */
 	const char* strMapListGlobal[] = { "metin2_map_a1", "metin2_map_a3", "metin2_map_b1", "metin2_map_b3", "metin2_map_c1", "metin2_map_c3",
