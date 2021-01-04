@@ -1,10 +1,12 @@
 #include "StdAfx.h"
 #include "../eterLib/GrpMath.h"
 
-#include "../UserInterface/PythonBackground.h"
+#include "ActorInstance.h"
 #include "../UserInterface/Locale_inc.h"
 
-#include "ActorInstance.h"
+#ifdef ENABLE_STOP_COLISSION_GLOBAL
+#include "../UserInterface/PythonBackground.h"
+#endif
 
 void CActorInstance::__InitializeCollisionData()
 {
@@ -578,6 +580,53 @@ BOOL CActorInstance::TestPhysicsBlendingCollision(CActorInstance & rVictim)
 
 BOOL CActorInstance::TestActorCollision(CActorInstance & rVictim)
 {
+	
+#ifdef ENABLE_STOP_COLISSION_GLOBAL
+	/*********************************************************************
+	* date		: 2016.02.16
+	* function	: Stop Colission
+	* developer	: VegaS
+	* skype		: sacadatt.amazon
+	* description : Checks if the victim is one of the examples below you can easily configure. If the victim was found
+					success as vnum site / breed ve you could go through it no longer block.
+	*/
+	/************
+	* The first value is the minimum value and the second value is the maximum value of pet vnum (mob_proto) - change 34051 with your max vnum of pet */
+	int pListPet[2] = { 34001, 34051 };
+	/************
+	* You can add whatever you like vnum of npc or monster (mob_proto) */
+	int pListGlobal[] = { 9001, 9002, 9003, 9004, 9005, 9006, 20011, 20091, 20092, 20093, 20094, 20095, 30000 };
+	/************
+	* You can add what mapname you want for enable this stop collission global like pet / npc */
+	const char* strMapListGlobal[] = { "metin2_map_a1", "metin2_map_a3", "metin2_map_b1", "metin2_map_b3", "metin2_map_c1", "metin2_map_c3",
+									"season2/metin2_map_skipia_dungeon_01", "season2/metin2_map_skipia_dungeon_02", "metin2_map_duel" };
+	/************
+	* Location name of the map where the event takes place ox */
+	const char* strMapEventOx = "season1/metin2_map_oxevent";
+
+
+	std::string stringName = CPythonBackground::Instance().GetWarpMapName();
+
+	for (int i = 0; i < _countof(strMapListGlobal); i++)
+	{
+#ifdef ENABLE_STOP_COLLISION_PLAYER_OX
+		if (strMapEventOx == stringName) // Check if u are place in map ox
+		{
+			if (0 <= rVictim.GetRace() && rVictim.GetRace() <= 7) // Check if the victim through which pass over a player (change 7 with 8 if u have wolfman)
+				return FALSE;	// Stop collission for player --> You can go through players now successfully without lock yourself		
+		}
+#endif		
+		if (strMapListGlobal[i] == stringName) // Check if you are in one of the maps listed in the global list
+		{
+			for (int i = 0; i < _countof(pListGlobal); i++)
+			{
+				if (rVictim.GetRace() == pListGlobal[i] || pListPet[0] <= rVictim.GetRace() && rVictim.GetRace() <= pListPet[1]) // Verify that the victim is npc vnum listed above, or if a pet.
+					return FALSE;	// Stop collission for global vnum like a pet or npc							
+			}
+		}
+	}
+#endif	
+	
 /*
 	if (m_pkHorse)
 	{
@@ -644,52 +693,6 @@ BOOL CActorInstance::TestActorCollision(CActorInstance & rVictim)
 
 	return FALSE;
 }
-
-#ifdef ENABLE_STOP_COLISSION_GLOBAL
-/*********************************************************************
-* date		: 2016.02.16
-* function	: Stop Colission
-* developer	: VegaS
-* skype		: sacadatt.amazon
-* description : Checks if the victim is one of the examples below you can easily configure. If the victim was found
-				success as vnum site / breed ve you could go through it no longer block.
-*/
-/************
-* The first value is the minimum value and the second value is the maximum value of pet vnum (mob_proto) - change 34051 with your max vnum of pet */
-int pListPet[2] = { 34001, 34051 };
-/************
-* You can add whatever you like vnum of npc or monster (mob_proto) */
-int pListGlobal[] = { 9001, 9002, 9003, 9004, 9005, 9006, 20011, 20091, 20092, 20093, 20094, 20095, 30000 };
-/************
-* You can add what mapname you want for enable this stop collission global like pet / npc */
-const char* strMapListGlobal[] = { "metin2_map_a1", "metin2_map_a3", "metin2_map_b1", "metin2_map_b3", "metin2_map_c1", "metin2_map_c3",
-								"season2/metin2_map_skipia_dungeon_01", "season2/metin2_map_skipia_dungeon_02", "metin2_map_duel" };
-/************
-* Location name of the map where the event takes place ox */
-const char* strMapEventOx = "season1/metin2_map_oxevent";
-
-
-std::string stringName = CPythonBackground::Instance().GetWarpMapName();
-
-for (int i = 0; i < _countof(strMapListGlobal); i++)
-{
-#ifdef ENABLE_STOP_COLLISION_PLAYER_OX
-	if (strMapEventOx == stringName) // Check if u are place in map ox
-	{
-		if (0 <= rVictim.GetRace() && rVictim.GetRace() <= 7) // Check if the victim through which pass over a player (change 7 with 8 if u have wolfman)
-			return FALSE;	// Stop collission for player --> You can go through players now successfully without lock yourself		
-	}
-#endif		
-	if (strMapListGlobal[i] == stringName) // Check if you are in one of the maps listed in the global list
-	{
-		for (int i = 0; i < _countof(pListGlobal); i++)
-		{
-			if (rVictim.GetRace() == pListGlobal[i] || pListPet[0] <= rVictim.GetRace() && rVictim.GetRace() <= pListPet[1]) // Verify that the victim is npc vnum listed above, or if a pet.
-				return FALSE;	// Stop collission for global vnum like a pet or npc							
-		}
-	}
-}
-#endif		
 
 bool CActorInstance::AvoidObject(const CGraphicObjectInstance& c_rkBGObj)
 {
