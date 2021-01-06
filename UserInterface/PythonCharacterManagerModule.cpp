@@ -778,7 +778,9 @@ void initchrmgr()
 	PyModule_AddIntConstant(poModule, "NAMECOLOR_WARP", CInstanceBase::NAMECOLOR_WARP);
 	PyModule_AddIntConstant(poModule, "NAMECOLOR_WAYPOINT", CInstanceBase::NAMECOLOR_WAYPOINT);
 	PyModule_AddIntConstant(poModule, "NAMECOLOR_EXTRA", CInstanceBase::NAMECOLOR_EXTRA);
-
+#ifdef ENABLE_GAME_MASTER_CHARNAME_COLOR
+    PyModule_AddIntConstant(poModule, "NAMECOLOR_GM", CInstanceBase::NAMECOLOR_GAMEMASTER);
+#endif
 	PyModule_AddIntConstant(poModule, "EFFECT_SPAWN_DISAPPEAR",		CInstanceBase::EFFECT_SPAWN_DISAPPEAR);
 	PyModule_AddIntConstant(poModule, "EFFECT_SPAWN_APPEAR",		CInstanceBase::EFFECT_SPAWN_APPEAR);
 	PyModule_AddIntConstant(poModule, "EFFECT_DUST",				CInstanceBase::EFFECT_DUST);

@@ -1653,7 +1653,11 @@ void initapp()
 #else
 	PyModule_AddIntConstant(poModule, "RENEWAL_DEAD_PACKET",	false);
 #endif
-
+#ifdef ENABLE_GAME_MASTER_CHARNAME_COLOR
+	PyModule_AddIntConstant(poModule, "ENABLE_GAME_MASTER_CHARNAME_COLOR", 1);
+#else
+	PyModule_AddIntConstant(poModule, "ENABLE_GAME_MASTER_CHARNAME_COLOR", 0);
+#endif
 #ifdef USE_OPENID
 	PyModule_AddIntConstant(poModule, "USE_OPENID",	1);
 	if (openid_test)

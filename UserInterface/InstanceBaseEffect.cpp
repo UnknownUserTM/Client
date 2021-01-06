@@ -605,6 +605,7 @@ UINT CInstanceBase::GetNameColorIndex()
 			return NAMECOLOR_PK;
 		}
 
+
 		if (__IsExistMainInstance() && !__IsMainInstance())
 		{
 			CInstanceBase* pkInstMain=__GetMainInstancePtr();
@@ -662,7 +663,16 @@ UINT CInstanceBase::GetNameColorIndex()
 		IAbstractPlayer& rPlayer=IAbstractPlayer::GetSingleton();
 		if (rPlayer.IsPartyMemberByVID(GetVirtualID()))
 			return NAMECOLOR_PARTY;
-
+		
+		
+				
+#ifdef ENABLE_GAME_MASTER_CHARNAME_COLOR
+        if (IsGameMaster())
+        {
+            return NAMECOLOR_GAMEMASTER;
+		}
+#endif
+		
 		return NAMECOLOR_PC + GetEmpireID();
 
 	}

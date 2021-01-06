@@ -28,3 +28,4 @@
 #define ENABLE_STOP_COLISSION_GLOBAL
 #define ENABLE_STOP_COLLISION_PLAYER_OX
 #endif
+#define ENABLE_GAME_MASTER_CHARNAME_COLOR    //Macht die Charnamen von den GameMastern in Gold
