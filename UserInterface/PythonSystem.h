@@ -89,6 +89,9 @@ class CPythonSystem : public CSingleton<CPythonSystem>
 			
 			int				iLastMSGPost;
 			int				iLastMSG;
+			
+			int				iPlayerFrameXPos;
+			int				iPlayerFrameYPos;
 		} TConfig;
 
 	public:
@@ -162,6 +165,13 @@ class CPythonSystem : public CSingleton<CPythonSystem>
 
 		void							SetLastMessage(int iMsg);
 		int								GetLastMessage();
+
+
+		void							SetPlayerFrameX(int iX);
+		int								GetPlayerFrameX();
+
+		void							SetPlayerFrameY(int iY);
+		int								GetPlayerFrameY();
 		
 		// Window
 		void							SaveWindowStatus(int iIndex, int iVisible, int iMinimized, int ix, int iy, int iHeight);

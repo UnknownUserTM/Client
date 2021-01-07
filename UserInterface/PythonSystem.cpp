@@ -320,6 +320,8 @@ void CPythonSystem::SetDefaultConfig()
 	m_Config.bIsForcedRules		= 0;
 	m_Config.iLastMSGPost 		= 0;
 	m_Config.iLastMSG			= 0;
+	m_Config.iPlayerFrameXPos	= 10;
+	m_Config.iPlayerFrameYPos	= 45;
 }
 
 bool CPythonSystem::IsWindowed()
@@ -472,6 +474,27 @@ int CPythonSystem::GetLastMessage()
 	return m_Config.iLastMSG;
 }
 
+
+void CPythonSystem::SetPlayerFrameX(int iX)
+{
+	m_Config.iPlayerFrameXPos = iX;
+}
+
+int CPythonSystem::GetPlayerFrameX()
+{
+	return m_Config.iPlayerFrameXPos;
+}
+
+void CPythonSystem::SetPlayerFrameY(int iY)
+{
+	m_Config.iPlayerFrameYPos = iY;
+}
+
+int CPythonSystem::GetPlayerFrameY()
+{
+	return m_Config.iPlayerFrameYPos;
+}
+
 bool CPythonSystem::IsAutoTiling()
 {
 	if (m_Config.bSoftwareTiling == 0)
@@ -599,6 +622,12 @@ bool CPythonSystem::LoadConfig()
 		else if (!stricmp(command, "LAST_MESSAGE"))
 			m_Config.iLastMSG = atoi(value);
 
+		else if (!stricmp(command, "PLAYER_FRAME_X"))
+			m_Config.iPlayerFrameXPos = atoi(value);
+
+		else if (!stricmp(command, "PLAYER_FRAME_Y"))
+			m_Config.iPlayerFrameYPos = atoi(value);
+
 	}
 
 	if (m_Config.bWindowed)
@@ -691,6 +720,8 @@ bool CPythonSystem::SaveConfig()
 	fprintf(fp, "FORCED_RULES				%d\n", m_Config.bIsForcedRules);
 	fprintf(fp, "LAST_MESSAGE_TIME				%d\n", m_Config.iLastMSGPost);
 	fprintf(fp, "LAST_MESSAGE				%d\n", m_Config.iLastMSG);
+	fprintf(fp, "PLAYER_FRAME_X				%d\n", m_Config.iPlayerFrameXPos);
+	fprintf(fp, "PLAYER_FRAME_Y				%d\n", m_Config.iPlayerFrameYPos);
 
 	fprintf(fp, "USE_DEFAULT_IME		%d\n", m_Config.bUseDefaultIME);
 	fprintf(fp, "SOFTWARE_TILING		%d\n", m_Config.bSoftwareTiling);

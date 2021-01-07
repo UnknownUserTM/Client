@@ -523,6 +523,36 @@ PyObject * systemSetLastMessage(PyObject * poSelf, PyObject * poArgs)
 	return Py_BuildNone();
 }
 
+PyObject * systemSetPlayerFrameX(PyObject * poSelf, PyObject * poArgs)
+{
+	int iX;
+	if (!PyTuple_GetInteger(poArgs, 0, &iX))
+		return Py_BuildException();
+
+	CPythonSystem::Instance().SetPlayerFrameX(iX);
+	return Py_BuildNone();
+}
+
+PyObject * systemGetPlayerFrameX(PyObject * poSelf, PyObject * poArgs)
+{
+	return Py_BuildValue("i", CPythonSystem::Instance().GetPlayerFrameX());
+}
+
+PyObject * systemSetPlayerFrameY(PyObject * poSelf, PyObject * poArgs)
+{
+	int iY;
+	if (!PyTuple_GetInteger(poArgs, 0, &iY))
+		return Py_BuildException();
+
+	CPythonSystem::Instance().SetPlayerFrameY(iY);
+	return Py_BuildNone();
+}
+
+PyObject * systemGetPlayerFrameY(PyObject * poSelf, PyObject * poArgs)
+{
+	return Py_BuildValue("i", CPythonSystem::Instance().GetPlayerFrameY());
+}
+
 
 PyObject * systemIsShowBonusSortToolTip(PyObject * poSelf, PyObject * poArgs)
 {
@@ -611,7 +641,13 @@ void initsystemSetting()
 		
 		{ "SetLastMSG",		systemSetLastMessage,					METH_VARARGS },
 		{ "GetLastMSG",		systemGetLastMessage,					METH_VARARGS },
+
+
+		{ "SetPlayerFrameX",		systemSetPlayerFrameX,					METH_VARARGS },
+		{ "GetPlayerFrameX",		systemGetPlayerFrameX,					METH_VARARGS },
 		
+		{ "SetPlayerFrameY",		systemSetPlayerFrameY,					METH_VARARGS },
+		{ "GetPlayerFrameY",		systemGetPlayerFrameY,					METH_VARARGS },
 		
 		{ NULL,							NULL,							NULL }
 	};
