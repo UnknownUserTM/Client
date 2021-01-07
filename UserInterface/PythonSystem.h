@@ -86,6 +86,9 @@ class CPythonSystem : public CSingleton<CPythonSystem>
 			bool			bTaskbarToolTip;
 			bool			bBonusSortToolTip;
 			int				bIsForcedRules;
+			
+			int				iLastMSGPost;
+			int				iLastMSG;
 		} TConfig;
 
 	public:
@@ -153,6 +156,12 @@ class CPythonSystem : public CSingleton<CPythonSystem>
 
 		void							SetForcedRulesDone(int iOpt);
 		int								IsForcedRules();
+
+		void							SetMSGTime(int iTime);
+		int								GetLastMSGTime();
+
+		void							SetLastMessage(int iMsg);
+		int								GetLastMessage();
 		
 		// Window
 		void							SaveWindowStatus(int iIndex, int iVisible, int iMinimized, int ix, int iy, int iHeight);

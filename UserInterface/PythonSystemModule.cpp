@@ -492,6 +492,38 @@ PyObject * systemSetForcedRulesDone(PyObject * poSelf, PyObject * poArgs)
 	return Py_BuildNone();
 }
 
+
+PyObject * systemGetLastMSGTime(PyObject * poSelf, PyObject * poArgs)
+{
+	return Py_BuildValue("i", CPythonSystem::Instance().GetLastMSGTime());
+}
+
+PyObject * systemSetMSGTime(PyObject * poSelf, PyObject * poArgs)
+{
+	int iTime;
+	if (!PyTuple_GetInteger(poArgs, 0, &iTime))
+		return Py_BuildException();
+
+	CPythonSystem::Instance().SetMSGTime(iTime);
+	return Py_BuildNone();
+}
+
+PyObject * systemGetLastMessage(PyObject * poSelf, PyObject * poArgs)
+{
+	return Py_BuildValue("i", CPythonSystem::Instance().GetLastMessage());
+}
+
+PyObject * systemSetLastMessage(PyObject * poSelf, PyObject * poArgs)
+{
+	int iMsg;
+	if (!PyTuple_GetInteger(poArgs, 0, &iMsg))
+		return Py_BuildException();
+
+	CPythonSystem::Instance().SetLastMessage(iMsg);
+	return Py_BuildNone();
+}
+
+
 PyObject * systemIsShowBonusSortToolTip(PyObject * poSelf, PyObject * poArgs)
 {
 	return Py_BuildValue("i", CPythonSystem::Instance().IsShowBonusSortToolTip());
@@ -572,7 +604,15 @@ void initsystemSetting()
 
 		{ "SetForcedRulesDone",	systemSetForcedRulesDone,				METH_VARARGS },
 		{ "IsForcedRules",		systemIsForcedRules,					METH_VARARGS },
-
+		
+		
+		{ "SetMSGTime",		systemSetMSGTime,					METH_VARARGS },
+		{ "GetMSGTime",		systemGetLastMSGTime,					METH_VARARGS },
+		
+		{ "SetLastMSG",		systemSetLastMessage,					METH_VARARGS },
+		{ "GetLastMSG",		systemGetLastMessage,					METH_VARARGS },
+		
+		
 		{ NULL,							NULL,							NULL }
 	};
 
