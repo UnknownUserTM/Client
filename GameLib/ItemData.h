@@ -551,6 +551,8 @@ class CItemData
 		BYTE GetType() const;
 		BYTE GetSubType() const;
 		UINT GetRefine() const;
+		WORD GetRefineSet() const;
+		DWORD GetRefinedVnum() const;
 		const char* GetUseTypeString() const;
 		DWORD GetWeaponType() const;
 		BYTE GetSize() const;

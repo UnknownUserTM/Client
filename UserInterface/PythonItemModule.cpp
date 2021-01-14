@@ -502,6 +502,24 @@ PyObject* itemLoadItemTable(PyObject* poSelf, PyObject* poArgs)
 	return Py_BuildNone();
 }
 
+PyObject * itemGetRefineSet(PyObject * poSelf, PyObject * poArgs)
+{
+	CItemData * pItemData = CItemManager::Instance().GetSelectedItemDataPointer();
+	if (!pItemData)
+		return Py_BuildException("Not yet select item data");
+
+	return Py_BuildValue("i", pItemData->GetRefineSet());
+}
+
+PyObject * itemGetRefinedVnum(PyObject * poSelf, PyObject * poArgs)
+{
+	CItemData * pItemData = CItemManager::Instance().GetSelectedItemDataPointer();
+	if (!pItemData)
+		return Py_BuildException("Not yet select item data");
+
+	return Py_BuildValue("i", pItemData->GetRefinedVnum());
+}
+
 void initItem()
 {
 	static PyMethodDef s_methods[] =
@@ -537,6 +555,9 @@ void initItem()
 		{ "IsKey",							itemIsKey,								METH_VARARGS },
 		{ "IsMetin",						itemIsMetin,							METH_VARARGS },
 		{ "CanAddToQuickSlotItem",			itemCanAddToQuickSlotItem,				METH_VARARGS },
+		
+		{ "GetRefineSet",					itemGetRefineSet,						METH_VARARGS },
+		{ "GetRefinedVnum",					itemGetRefinedVnum,						METH_VARARGS },
 
 		{ "Update",							itemUpdate,								METH_VARARGS },
 		{ "Render",							itemRender,								METH_VARARGS },

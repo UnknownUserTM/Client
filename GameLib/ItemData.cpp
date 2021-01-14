@@ -429,6 +429,16 @@ UINT CItemData::GetRefine() const
 	return GetIndex()%10;
 }
 
+WORD CItemData::GetRefineSet() const
+{
+	return m_ItemTable.wRefineSet;
+}
+
+DWORD CItemData::GetRefinedVnum() const
+{
+	return m_ItemTable.dwRefinedVnum;
+}
+
 BOOL CItemData::IsEquipment() const
 {
 	switch (GetType())
